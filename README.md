@@ -58,12 +58,14 @@ And call the shelf into you prefered rest route
 
 ```
 
+You can see the full functionality into the [TODO-LIST ON HERBS repository](https://github.com/herbsjs/todolist-on-herbs)
+
 
 ## TODO
 
 - [X] Self-documentation
-- [X] Add templates and injection of css file
-- [X] Entities of gotu support
+- [ ] Add templates and injection of css file
+- [ ] Entities of gotu support
 - [ ] Playground functionality
 - [ ] GraphQL documentation sample
 
