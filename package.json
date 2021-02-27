@@ -4,7 +4,9 @@
   "description": "A self-generate documentation about the usecases (buchu) of herbsJS",
   "main": "./src/shelf.js",
   "scripts": {
-    "test": "mocha --timeout 999999 --colors --recursive ./test"
+    "test": "mocha --timeout 999999 --colors --recursive ./test",
+    "lint": "npx eslint \"**/*.{js,jsx}\" --quiet",
+    "lint:fix": "npx eslint \"**/*.{js,jsx}\" --fix"
   },
   "directories": {
     "lib": "src",
