@@ -1,10 +1,11 @@
 {
   "name": "herbsshelf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A self-generate documentation about the usecases (buchu) of herbsJS",
   "main": "./src/shelf.js",
   "scripts": {
     "test": "mocha --timeout 999999 --colors --recursive ./test",
+    "coverage": "nyc --reporter=html mocha ./test",
     "lint": "npx eslint \"**/*.{js,jsx}\" --quiet",
     "lint:fix": "npx eslint \"**/*.{js,jsx}\" --fix"
   },
@@ -25,14 +26,14 @@
   ],
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.10.0",
-    "eslint-config-prettier": "^6.12.0",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "mocha": "^8.1.3",
-    "buchu": "^1.0.10",
+    "eslint-plugin-prettier": "^3.3.1",
+    "mocha": "^8.3.2",
+    "buchu": "^1.0.11",
     "nyc": "^15.1.0",
-    "prettier": "^2.1.2"
+    "prettier": "^2.2.1"
   },
   "author": "Jhonathan Soares",
   "license": "MIT"
