@@ -1,6 +1,6 @@
 {
   "name": "herbsshelf",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A self-generate documentation about the usecases (buchu) of herbsJS",
   "main": "./src/shelf.js",
   "scripts": {
