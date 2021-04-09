@@ -85,6 +85,25 @@ const getCssStyle = () => {
         <section class="content" v-else>
           <h1 class="shelf-title">Herbs Shelf</h1>
           <h1>{{selectedPage.description}}</h1>
+
+          <div v-if="selectedPage.request.length > 0">
+          <h4>Request:</h4>
+            <ul class="steps-list">
+              <template v-for="(item,index) in selectedPage.request">
+                <li class="icon i-request">  <b> {{ item.name }} </b> : <i> {{ item.type }} </i></li>
+              </template>
+          </ul>
+          </div>
+
+          <div v-if="selectedPage.response.length > 0">
+          <h4>Response:</h4>
+          <ul class="steps-list">
+            <template v-for="(item,index) in selectedPage.response">
+              <li class="icon i-response">  <b> {{ item.name }} </b> : <i> {{ item.type }} </i></li>
+            </template>
+          </ul>
+          </div>
+
           <h3>Steps:</h3>
   
           <ul class="steps-list">
