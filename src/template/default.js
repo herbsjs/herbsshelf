@@ -86,7 +86,7 @@ const getCssStyle = () => {
           <h1 class="shelf-title">Herbs Shelf</h1>
           <h1>{{selectedPage.description}}</h1>
 
-          <div v-if="selectedPage.request.length > 0">
+          <div v-if="selectedPage.request && selectedPage.request.length > 0">
           <h4>Request:</h4>
             <ul class="steps-list">
               <template v-for="(item,index) in selectedPage.request">
@@ -95,7 +95,7 @@ const getCssStyle = () => {
           </ul>
           </div>
 
-          <div v-if="selectedPage.response.length > 0">
+          <div v-if="selectedPage.response && selectedPage.response.length > 0">
           <h4>Response:</h4>
           <ul class="steps-list">
             <template v-for="(item,index) in selectedPage.response">
