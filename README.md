@@ -10,9 +10,12 @@ This is a self-generate documentation, here you can see all the flow of informat
 
 You can use the lateral panel to navigate into Use Cases of this application. 
 
-### Installing
+ <p align='center'><img src='https://herbsjs.org/assets/images/herbsshelf_screenshot-751116771c5d62fb98188829d51f0cbb.png' height='440'></p>
 
-    $ npm install herbsshelf
+### Installing
+```
+    $ npm install @herbsjs/herbsshelf
+```
 
 ### Functioning 
 
