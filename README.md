@@ -64,11 +64,14 @@ And call the shelf into you prefered rest route
 You can see the full functionality into the [TODO-LIST ON HERBS repository](https://github.com/herbsjs/todolist-on-herbs)
 
 
+TIP: If you need to block the shelf renderization, use process.env.HERBS_SHELF_RENDER = "false". This will render a unauthorized message instead the usecase list. Recommended for production environments. By default, the renderization is allowed.
+
+
 ## TODO
 
 - [X] Self-documentation
 - [ ] Add templates and injection of css file
-- [ ] Entities of gotu support
+- [X] Entities of gotu support
 - [ ] Playground functionality
 - [ ] GraphQL documentation sample
 
@@ -84,4 +87,3 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 
 **herbsshelf** is released under the
 [MIT license](https://github.com/herbsjs/herbsshelf/blob/main/LICENSE.md)
-

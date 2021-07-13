@@ -30,7 +30,12 @@ const getCssStyle = () => {
               alt="HerbsJS Logo"
             />
           </div>
-          <ul class="uc-nav">
+          <ul class="uc-nav" v-if="unauthorized">
+          <li>
+              <span> Shelf not authorized </span>
+          </li>
+          </ul>
+          <ul class="uc-nav" v-else>
             <li
               v-for="(item,index) in shelfData"
               :key="item.section"
@@ -131,6 +136,7 @@ const getCssStyle = () => {
             page: -1,
             navOpen: -1,
             selectedPage: {},
+            unauthorized : ${shelfData.unauthorized},
             shelfData: ${JSON.stringify(shelfData)},
           },
           methods: {

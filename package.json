@@ -1,7 +1,7 @@
 {
   "name": "@herbsjs/herbsshelf",
   "version": "1.0.0",
-  "description": "A self-generate documentation about the usecases (buchu) of herbsJS",
+  "description": "A self-generate documentation about the usecases (buchu) of Herbs",
   "main": "./src/shelf.js",
   "scripts": {
     "test": "mocha --timeout 999999 --colors --recursive ./test",
@@ -41,7 +41,7 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.4.0",
     "mocha": "^9.0.1",
-    "@herbsjs/buchu": "^1.0.1",
+    "@herbsjs/buchu": "^1.1.0",
     "nyc": "^15.1.0",
     "prettier": "^2.3.1"
   },

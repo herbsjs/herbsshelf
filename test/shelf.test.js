@@ -34,8 +34,24 @@ describe("Generate usecase self-documentation", () => {
 
     })
 
+    before(function () {
+      env = process.env
+      process.env = { HERBS_SHELF_RENDER : "false" }
+    })
+  
+    it('should validate if unauthorized message is generated when env.HERBS_SHELF_RENDER is false', () => {
+      //given
 
+      var shelf = renderShelfHTML(usecases)
+      //then
+      assert.strictEqual(/unauthorized : true/g.test(shelf), true)
 
+    })
+
+    after(function () {
+      process.env = env
+    })
+  
   })
 
   describe('the simplest use case with complex request and response', () => {
