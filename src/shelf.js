@@ -49,7 +49,13 @@ const formatUseCaseDoc = (usecase) => {
 }
 
 function renderShelfHTML(usecases) {
+
   const shelfData = generateShelfData(usecases)
+
+  if (process.env.HERBS_SHELF_RENDER === "false") {
+    shelfData.unauthorized = true
+  }
+  
   return generateHTML(shelfData)
 }
 
