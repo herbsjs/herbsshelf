@@ -20,13 +20,14 @@ function generateHTML(shelfData) {
     </style>
     <body>
       <header> 
-      built with
-      <img
-        class="logo"
-        src="https://avatars3.githubusercontent.com/u/60399865"
-        alt="HerbsJS Logo"
-      />
-      <div>DarkMode</div>
+        built with
+        <img
+          class="logo"
+          src="https://avatars3.githubusercontent.com/u/60399865"
+          alt="HerbsJS Logo"
+        />
+        <div>          
+        </div>
       </header>
       <main id="shelf">
         <nav>
@@ -47,7 +48,7 @@ function generateHTML(shelfData) {
                   :class="{selected : page === ucIndex }"
                   @click="openPage(ucIndex)"
                 >
-                  {{uc.description}}
+                  {{uc.description}} >
                 </li>
               </ul>
             </li>
@@ -59,7 +60,6 @@ function generateHTML(shelfData) {
           </div>
         </nav>
         <section class="content" v-if="page < 0">
-          <h1 class="shelf-title">Herbs Shelf</h1>
           <h2>Getting started!</h2>
           <p>
             This is a self-generate documentation, here you can see all the flow
@@ -71,49 +71,45 @@ function generateHTML(shelfData) {
           </p>
         </section>
         <section class="content" v-else>
-          <h2>{{selectedPage.description}}</h2>
+          <h3>{{selectedPage.description}}</h3>
           <div class="content-card">
-
             <h4 class="icon i-play">Steps:</h4>
-    
             <ul class="steps-list">
               <template v-for="step in selectedPage.steps">
                 <template v-if="step.type === 'if else'">
-                  <ul class="if-steps-list">s
-                    <li class="icon i-if">[if] {{step.if.description}}</li>
-                    <li class="icon i-then">[then] {{step.then.description}}</li>
-                    <li class="icon i-then">[else] {{step.else.description}}</li>
-                  </ul>
+                  <li>[if] {{step.if.description}}</li>
+                  <li>[then] {{step.then.description}}</li>
+                  <li>[else] {{step.else.description}}</li>
                 </template>
                 <template v-else>
-                  <li class="icon i-play">{{step.description}}</li>
+                  <li>{{step.description}}</li>
                 </template>
               </template>
             </ul>
           </div>
+
           <div class="content-row">
             <div v-if="selectedPage.request && selectedPage.request.length > 0" class="content-card">
-              <h4>Request:</h4>
+              <h4 class="icon i-request">Request:</h4>
               <ul class="steps-list">
                 <template v-for="(item,index) in selectedPage.request">
-                  <li class="icon i-request">  <b> {{ item.name }} </b> : <i> {{ item.type }} </i></li>
+                  <li>  <b> {{ item.name }} </b> : <i> {{ item.type }} </i></li>
                 </template>
             </ul>
             </div>
-
             <div v-if="selectedPage.response && selectedPage.response.length > 0" class="content-card">
-              <h4>Response:</h4>
+              <h4 class="icon i-response">Response:</h4>
               <ul class="steps-list">
                 <template v-for="(item,index) in selectedPage.response">
-                  <li class="icon i-response">  <b> {{ item.name }} </b> : <i> {{ item.type }} </i></li>
+                  <li>  <b> {{ item.name }} </b> : <i> {{ item.type }} </i></li>
                 </template>
               </ul>
             </div>
           </div>
-          
+
         </section>
       </main>
-  
+
       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
       <script>
         var shelf = new Vue({
@@ -140,6 +136,7 @@ function generateHTML(shelfData) {
           },
         })
       </script>
+     
     </body>
   </html>
   `
