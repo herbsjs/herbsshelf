@@ -39,7 +39,12 @@ function generateHTML(shelfData) {
               :key="item.section"
               class="uc-nav-groups"
             >
-              <span @click="openNav(index)">{{ item.section }}</span>
+              <span
+                @click="openNav(index)"
+                :class="{selected : page === index }"
+                class="i-arrow">
+                {{ item.section }}
+              </span>
               <ul class="uc-list-nav" v-if="navOpen === index">
                 <li
                   v-for="(uc, ucIndex) in item.useCases"
@@ -48,7 +53,7 @@ function generateHTML(shelfData) {
                   :class="{selected : page === ucIndex }"
                   @click="openPage(ucIndex)"
                 >
-                  {{uc.description}} >
+                  {{uc.description}} 
                 </li>
               </ul>
             </li>
