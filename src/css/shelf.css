@@ -13,7 +13,7 @@
   --grey: #505050;
   --green: #78744D;
   --brown: #8E734A;
-  
+
 }
 
 /* browser default configuration reset */
@@ -37,7 +37,7 @@ body {
 main {
   background-color: var(--light);
   min-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   animation: entrance 500ms ease-out;
 }
