@@ -21,20 +21,18 @@ describe("Generate usecase self-documentation", () => {
     it('should generate some doc', () => {
       //given
       usecases.push({ usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } },)
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.ok(shelf)
     })
 
     it('should validate if documentation generated is a valid HTML document', () => {
       //given
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 
-    })
-
-
+    })   
 
   })
 
@@ -61,20 +59,18 @@ describe("Generate usecase self-documentation", () => {
     it('should generate some doc', () => {
       //given
       usecases.push({ usecase: givenTheSimplestUseCaseWithRequestResponse(), tags: { group: 'SimplestestUseCaseWithRequestResponse' } },)
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.ok(shelf)
     })
 
     it('should validate if documentation generated is a valid HTML document', () => {
       //given
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 
     })
-
-
 
   })
 
@@ -97,14 +93,14 @@ describe("Generate usecase self-documentation", () => {
     it('should generate some doc', () => {
       //given
       usecases.push({ usecase: givenTheSimplestUseCaseWithRequestResponse(), tags: { group: 'SimplestestUseCaseWithRequestResponse' } },)
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.ok(shelf)
     })
 
     it('should validate if documentation generated is a valid HTML document', () => {
       //given
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)      
       //then
       assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 
