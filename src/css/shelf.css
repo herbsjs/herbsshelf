@@ -84,14 +84,12 @@ nav {
 	margin-bottom: 20px;
 }
 .contribute {
-	position: fixed;
 	width: calc(1200px * 0.3);
-	padding: 20px;
-	display: block;
-	text-align: center;
-	bottom: 0;
-
-	color: var(--dark);
+    padding: 0px 40px;
+    display: block;
+    text-align: left;
+    bottom: 0;
+    color: var(--dark);
 }
 
 .text-center {
@@ -105,7 +103,7 @@ nav {
 
 section.content {
 	width: 70%;
-	height: 100vh;
+	min-height: 100vh;
 	position: relative;
 	padding: 7rem;
 	margin: 30px 0 0 30px;
@@ -125,6 +123,7 @@ h1 {
 	font-weight: 700;
 	font-size: 2.3em;
 	color: var(--grey);
+	line-height: 75px;
 }
 
 h2 {
@@ -132,16 +131,23 @@ h2 {
 	color: var(--yellow);
 	font-weight: 600;
 	margin-bottom: 2.5rem;
+	line-height: 75px;
 }
 
 h3 {
 	font-size: 1.3em;
 	color: var(--yellow);
 	font-weight: 600;
+	line-height: 75px;
 }
 
 p {
 	color: var(--black);
+	line-height: 25px;
+}
+
+a {
+	color:#323232
 }
 
 .shelf-title {
@@ -176,6 +182,26 @@ p {
 	color: var(--grey);
 }
 
+li {
+	margin: 10px 20px
+}
+
+code {
+	background: #f4f4f4;
+    border: 1px solid #ddd;    
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+
 @keyframes arrowMove {
 	from {
 		filter: drop-shadow(0px 0px 0px var(--dark));
@@ -204,6 +230,7 @@ ul.uc-list-nav {
 ul.uc-list-nav li {
 	color: var(--yellow);
 	margin: 20px 0;
+	cursor: pointer;
 }
 
 ul.steps-list {
@@ -219,6 +246,7 @@ li.uc-nav-groups span {
 	text-transform: uppercase;
 	display: block;
 	color: var(--grey);
+	cursor: pointer;
 }
 
 .icon {
