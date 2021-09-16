@@ -1,7 +1,7 @@
-const Nav =`
+const Nav = (project) => `
   <nav>
     <div className="project-tag"> PROJECT </div>
-    <h1>NAME OF THE PROJECT</h1>
+    <h1>${project}</h1>
     <ul className="uc-nav">
       {shelfData.map((item, index) =>
         <li key={item.section} className="uc-nav-groups">
