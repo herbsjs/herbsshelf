@@ -1,3 +1,22 @@
+# [2.0.0](https://github.com/herbsjs/herbsshelf/compare/v1.0.0...v2.0.0) (2021-09-24)
+
+
+### Code Refactoring
+
+* change buchu to Herbs package ([923ce2d](https://github.com/herbsjs/herbsshelf/commit/923ce2df72808ae3c7bba6a91459726a00a019c2))
+
+
+### Features
+
+* implements theme switching with dark mode ([0ad4cf9](https://github.com/herbsjs/herbsshelf/commit/0ad4cf95664d7ea9af14cd47070eff74f24505a3))
+* include readme on project and include project name paramter ([826863b](https://github.com/herbsjs/herbsshelf/commit/826863be4f24664c2ee6ffae5ba538afdde41315))
+* update documentation with readme section ([aca4e02](https://github.com/herbsjs/herbsshelf/commit/aca4e0225e4d823cb56a099558cfb81b9eb80696))
+
+
+### BREAKING CHANGES
+
+* New version of Shelf with new layout.
+
 # 1.0.0 (2021-06-23)
 
 
