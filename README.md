@@ -10,7 +10,7 @@ This is a self-generate documentation, here you can see all the flow of informat
 
 You can use the lateral panel to navigate into Use Cases of this application. 
 
- <p align='center'><img src='https://herbsjs.org/assets/images/herbsshelf_screenshot-751116771c5d62fb98188829d51f0cbb.png' height='440'></p>
+ <p align='center'><img src='docs/herbs_shelf.png' height='440'></p>
 
 ### Installing
 ```
@@ -53,16 +53,24 @@ And call the shelf into you prefered rest route
 ```javascript
 
  this.app.get('/herbsshelf', (req, res, next) => {
-      res.setHeader('Content-Type', 'text/html')
-      const shelf = renderShelfHTML(usecases())
-      res.write(shelf)
-      res.end()
- }
+    res.setHeader('Content-Type', 'text/html')
+    const shelf = renderShelfHTML('Project Name', usecases())
+    res.write(shelf)
+    res.end()
+})
 
 ```
 
-You can see the full functionality into the [TODO-LIST ON HERBS repository](https://github.com/herbsjs/todolist-on-herbs)
+If your project has a `readme.md`, this content should be shown at the beginning of the project. If you want to use a custom readme, you can specify on startup:
 
+```javascript
+
+const shelf = renderShelfHTML('Project Name', usecases(), './custom-readme.md')
+
+```
+
+
+You can see the full functionality into the [TODO-LIST ON HERBS repository](https://github.com/herbsjs/todolist-on-herbs)
 
 ## TODO
 
