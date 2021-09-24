@@ -1,5 +1,5 @@
 const assert = require("assert")
-const { usecase, Ok, step } = require('@herbsjs/buchu')
+const { usecase, Ok, step } = require('@herbsjs/herbs')
 const renderShelfHTML = require('../src/shelf')
 
 describe("Generate usecase self-documentation", () => {
