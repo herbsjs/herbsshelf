@@ -15,11 +15,6 @@ const Nav = (project) => `
           </ul> : null}
         </li>)}
     </ul>
-    <div className="contribute">
-      <a href="https://github.com/herbsjs">
-        <h3>Contribute on Github</h3>
-      </a>
-    </div>
   </nav >
 `
 
