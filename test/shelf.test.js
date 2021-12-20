@@ -1,5 +1,5 @@
 const assert = require("assert")
-const { usecase, Ok, step } = require('@herbsjs/buchu')
+const { usecase, Ok, step } = require('@herbsjs/herbs')
 const renderShelfHTML = require('../src/shelf')
 
 describe("Generate usecase self-documentation", () => {
@@ -21,37 +21,19 @@ describe("Generate usecase self-documentation", () => {
     it('should generate some doc', () => {
       //given
       usecases.push({ usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } },)
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.ok(shelf)
     })
 
     it('should validate if documentation generated is a valid HTML document', () => {
       //given
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 
-    })
+    })   
 
-    before(function () {
-      env = process.env
-      process.env = { HERBS_SHELF_RENDER : "false" }
-    })
-  
-    it('should validate if unauthorized message is generated when env.HERBS_SHELF_RENDER is false', () => {
-      //given
-
-      var shelf = renderShelfHTML(usecases)
-      //then
-      assert.strictEqual(/unauthorized : true/g.test(shelf), true)
-
-    })
-
-    after(function () {
-      process.env = env
-    })
-  
   })
 
   describe('the simplest use case with complex request and response', () => {
@@ -77,20 +59,18 @@ describe("Generate usecase self-documentation", () => {
     it('should generate some doc', () => {
       //given
       usecases.push({ usecase: givenTheSimplestUseCaseWithRequestResponse(), tags: { group: 'SimplestestUseCaseWithRequestResponse' } },)
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.ok(shelf)
     })
 
     it('should validate if documentation generated is a valid HTML document', () => {
       //given
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 
     })
-
-
 
   })
 
@@ -113,14 +93,14 @@ describe("Generate usecase self-documentation", () => {
     it('should generate some doc', () => {
       //given
       usecases.push({ usecase: givenTheSimplestUseCaseWithRequestResponse(), tags: { group: 'SimplestestUseCaseWithRequestResponse' } },)
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.ok(shelf)
     })
 
     it('should validate if documentation generated is a valid HTML document', () => {
       //given
-      var shelf = renderShelfHTML(usecases)
+      var shelf = renderShelfHTML('Project Test', usecases)      
       //then
       assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 

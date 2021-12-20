@@ -48,15 +48,9 @@ const formatUseCaseDoc = (usecase) => {
 
 }
 
-function renderShelfHTML(usecases) {
-
+function renderShelfHTML(project, usecases, readmePath = './README.md') {
   const shelfData = generateShelfData(usecases)
-
-  if (process.env.HERBS_SHELF_RENDER === "false") {
-    shelfData.unauthorized = true
-  }
-  
-  return generateHTML(shelfData)
+  return generateHTML(project, shelfData, readmePath)
 }
 
 module.exports = renderShelfHTML
