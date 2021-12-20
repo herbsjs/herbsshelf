@@ -6,10 +6,6 @@
 * fix marked library dependency ([6ca8b54](https://github.com/herbsjs/herbsshelf/commit/6ca8b54984f655160fa8d94547e7452d2328192b))
 
 
-### Features
-
-* **shelf.js:** add possibility to block renderization of shelf ([5783acb](https://github.com/herbsjs/herbsshelf/commit/5783acbe259afba80f4a3c36bb6e1074c8d4c2ef))
-
 # [2.0.0](https://github.com/herbsjs/herbsshelf/compare/v1.0.0...v2.0.0) (2021-09-24)
 
 
