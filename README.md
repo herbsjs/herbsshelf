@@ -72,9 +72,6 @@ const shelf = renderShelfHTML('Project Name', usecases(), './custom-readme.md')
 
 You can see the full functionality into the [TODO-LIST ON HERBS repository](https://github.com/herbsjs/todolist-on-herbs)
 
-TIP: If you need to block the shelf renderization, use process.env.HERBS_SHELF_RENDER = "false". This will render a unauthorized message instead the usecase list. Recommended for production environments. By default, the renderization is allowed.
-
-
 ## TODO
 
 - [X] Self-documentation
