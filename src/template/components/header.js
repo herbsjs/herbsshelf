@@ -2,7 +2,7 @@ const Header = `<header>
     built with
     <picture>
       <a href="https://github.com/herbsjs">
-        <source srcset="https://herbsjs.org/img/logo-herbsjs-douradoebranco.png" media="(prefers-color-scheme: dark)"/>
+        <source srcSet="https://herbsjs.org/img/logo-herbsjs-douradoebranco.png" media="(prefers-color-scheme: dark)"/>
         <img
           className="logo"
           style={{width: '150px'}}
