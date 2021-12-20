@@ -38,10 +38,11 @@ function generateHTML(project, shelfData, readmePath) {
 	    
 	    <main id="shelf"/>
 
-	    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-	    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+	    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+	    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 
 
 	    <script type="text/babel">
@@ -94,7 +95,7 @@ function generateHTML(project, shelfData, readmePath) {
 					const ReadmeDoc = () => {
 						return (
 							<section className="content">
-								<article dangerouslySetInnerHTML={{__html: marked(decodeURI(readmeText)) }}></article>
+								<article dangerouslySetInnerHTML={{__html: marked.parse(decodeURI(readmeText)) }}></article>
 								</section>
 						)
 					}
