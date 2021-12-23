@@ -115,3 +115,7 @@ dist
 .pnp.*
 .editorconfig
 .prettierrc
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
