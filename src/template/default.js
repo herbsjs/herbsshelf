@@ -49,25 +49,25 @@ function generateHTML(project, shelfData, readmePath) {
 	      const { useState, useEffect} = React
 	      function Shelf() {			
 	        const [theme, setTheme] = useState(localStorage.getItem('data-theme'));
-					const [readmeText, setReadmeText] = useState('${getReadme(readmePath)}');
+			const [readmeText, setReadmeText] = useState('${getReadme(readmePath)}');
 	        const [page, setPage] = useState(-1);
 	        const [navOpen, setNavOpen] = useState(-1);
 	        const [selectedPage, setSelectedPage] = useState({});
 	        const [shelfData, setShelfData] = useState(${JSON.stringify(shelfData)});
 
 	        const toggleTheme = () => {
-						const themeSwitch = document.querySelector('#main-body')
+				const themeSwitch = document.querySelector('#main-body')
 						
-						if (theme ==='dark'){
-							themeSwitch.classList.replace("dark", 'light');
-							localStorage.setItem("data-theme", 'light') 
-							setTheme('light')
-						} else{
-							themeSwitch.classList.replace("light", "dark");
-							localStorage.setItem("data-theme", "dark")
-							setTheme('dark')
-						}
-					}
+				if (theme ==='dark'){
+					themeSwitch.classList.replace("dark", 'light');
+					localStorage.setItem("data-theme", 'light') 
+					setTheme('light')
+				} else{
+					themeSwitch.classList.replace("light", "dark");
+					localStorage.setItem("data-theme", "dark")
+					setTheme('dark')
+				}
+			}
 
 	        const openNav = (value) => {
 	          setNavOpen(navOpen === value ? -1 : value)
@@ -82,44 +82,44 @@ function generateHTML(project, shelfData, readmePath) {
 	          forceUpdate()
 	        }
 
-					const StartedProject = () => {
-						return (
-							<section className="content">
-								<h2>Getting started!</h2>
-								<p>This is a self-generate documentation, here you can see all the flow of information in the application.</p>
-								<p>You can use the lateral panel to navigate into <strong>Use Cases</strong> of this application.</p>
-							</section>
-						)
-					}
+			const StartedProject = () => {
+				return (
+					<section className="content">
+						<h2>Getting started!</h2>
+						<p>This is a self-generate documentation, here you can see all the flow of information in the application.</p>
+						<p>You can use the lateral panel to navigate into <strong>Use Cases</strong> of this application.</p>
+					</section>
+				)
+			}
 
-					const ReadmeDoc = () => {
-						return (
-							<section className="content">
-								<article dangerouslySetInnerHTML={{__html: marked.parse(decodeURI(readmeText)) }}></article>
-								</section>
-						)
-					}
+			const ReadmeDoc = () => {
+				return (
+					<section className="content">
+						<article dangerouslySetInnerHTML={{__html: marked.parse(decodeURI(readmeText)) }}></article>
+						</section>
+				)
+			}
 
-					const WelcomeProject = () => readmeText ? <ReadmeDoc /> : <StartedProject /> 
+			const WelcomeProject = () => readmeText ? <ReadmeDoc /> : <StartedProject /> 
 
 	        return (
-						<div id="main-body" className={theme}>
-							${Header}
-							<main id="shelf">
-								${NavBar(project)}
-								{page < 0 ? <WelcomeProject />
-								:
-									<section className="content">
-										<h3>{selectedPage.description}</h3>
-										${StepsCard}
-										<div class="content-row">
-											${RequestCard}
-											${ResponseCard}
-										</div>
-									</section>
-								}
-							</main>
-						</div>
+				<div id="main-body" className={theme}>
+					${Header}
+					<main id="shelf">
+						${NavBar(project)}
+						{page < 0 ? <WelcomeProject />
+						:
+							<section className="content">
+								<h3>{selectedPage.description}</h3>
+								${StepsCard}
+								<div class="content-row">
+									${RequestCard}
+									${ResponseCard}
+								</div>
+							</section>
+						}
+					</main>
+				</div>
 	        );
 	      }
 	      const domContainer = document.querySelector('#shelf');
