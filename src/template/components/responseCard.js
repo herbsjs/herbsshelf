@@ -3,8 +3,12 @@ const ResponseCard =`
     <div className="content-card">
       <h4 className="icon i-response">Response:</h4>
       <ul className="steps-list">
-      {selectedPage.response.map( (resItem, index) =>
-        <li> <b> {resItem.name} </b> : <i> {resItem.type} </i></li>
+      {selectedPage.response.map( (resItem, index) => {
+          if (['Array of', 'Object of'].includes(resItem.name))
+            return <li> {resItem.name} <b>{resItem.type}</b></li>
+          else
+            return <li> <b>{resItem.name}</b> : {resItem.type}</li>
+        }
       )}
       </ul>
     </div>
