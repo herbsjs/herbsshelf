@@ -91,4 +91,4 @@ If you would like to help contribute to this repository, please see [CONTRIBUTIN
 ### License
 
 **herbsshelf** is released under the
-[MIT license](https://github.com/herbsjs/herbsshelf/blob/main/LICENSE.md)
+[MIT license](https://github.com/herbsjs/herbsshelf/blob/main/LICENSE)
