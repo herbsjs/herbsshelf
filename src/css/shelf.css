@@ -278,7 +278,7 @@ ul.uc-nav {
 	overflow: hidden;
 }
 ul.uc-nav:hover {
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 ul.uc-nav,
 ul.uc-list-nav,
@@ -295,7 +295,7 @@ ul.uc-list-nav {
 	padding: 0;
 }
 ul.uc-list-nav:hover {
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 ul.uc-list-nav li {
