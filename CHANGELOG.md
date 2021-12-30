@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/herbsjs/herbsshelf/compare/v2.1.0...v2.1.1) (2021-12-30)
+
+
+### Bug Fixes
+
+* add correct link at "MIT License" in README ([b54e09a](https://github.com/herbsjs/herbsshelf/commit/b54e09ad2d227aab20a088459c8d58704e99d3d6))
+
 # [2.1.0](https://github.com/herbsjs/herbsshelf/compare/v2.0.0...v2.1.0) (2021-12-20)
 
 
