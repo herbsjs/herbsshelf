@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/herbsjs/herbsshelf/compare/v2.1.1...v2.1.2) (2022-01-15)
+
+
+### Bug Fixes
+
+* **shelf.css:** fix icons for dark mode ([e877e3a](https://github.com/herbsjs/herbsshelf/commit/e877e3afc51517f5cc625caccb3c1de9d6ca0901)), closes [#22](https://github.com/herbsjs/herbsshelf/issues/22)
+
 ## [2.1.1](https://github.com/herbsjs/herbsshelf/compare/v2.1.0...v2.1.1) (2021-12-30)
 
 
