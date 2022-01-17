@@ -40,10 +40,8 @@ function generateHTML(project, shelfData, readmePath) {
 
 	    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 	    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-	    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
-
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+	    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
 
 	    <script type="text/babel">
 	      const { useState, useEffect} = React
