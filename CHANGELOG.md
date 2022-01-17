@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/herbsjs/herbsshelf/compare/v2.1.2...v2.1.3) (2022-01-17)
+
+
+### Bug Fixes
+
+* fix if else representation ([5224d0b](https://github.com/herbsjs/herbsshelf/commit/5224d0bd4fcb47f750bcf22cbdd1be15a5b8fd29)), closes [#16](https://github.com/herbsjs/herbsshelf/issues/16)
+
 ## [2.1.2](https://github.com/herbsjs/herbsshelf/compare/v2.1.1...v2.1.2) (2022-01-15)
 
 
