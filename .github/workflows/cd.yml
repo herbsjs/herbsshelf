@@ -33,3 +33,9 @@ jobs:
 
     - name: Running Linter - ESLint
       run: npm run lint
+
+    - name: Run Semantic Release
+      run: npx semantic-release
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
