@@ -11,6 +11,8 @@ const getCssStyle = () => {
 	return fs.readFileSync(cssFilePath, 'utf-8')
 }
 
+const getMermaid = () => 'document.querySelectorAll("pre.mermaid, pre>code.language-mermaid").forEach($el => { console.log(1); if ($el.tagName === "CODE") {$el = $el.parentElement} $el.outerHTML = "<div class=\'mermaid\'>" + $el.textContent + "</div> <details> <summary>Diagram source</summary><pre>" + $el.textContent + "</pre></details> "})'
+
 const getReadme = (path) => {
 	if (fs.existsSync(path)) {
 		const readme = fs.readFileSync(path).toString()
@@ -27,9 +29,10 @@ function generateHTML(project, shelfData, readmePath) {
 	  <html lang="en">
 	  <head>
 	      <meta charset="UTF-8" />
-				<meta name="color-scheme" content="dark light">
+		  <meta name="color-scheme" content="dark light">
 	      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	      <title>Herbs Shelf</title>
+		
 	  </head>
 	  <style>
 	    ${getCssStyle()}
@@ -42,7 +45,8 @@ function generateHTML(project, shelfData, readmePath) {
 	    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
 	    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
-
+		<script src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js"></script>
+		
 	    <script type="text/babel">
 	      const { useState, useEffect} = React
 	      function Shelf() {			
@@ -122,8 +126,19 @@ function generateHTML(project, shelfData, readmePath) {
 	      }
 	      const domContainer = document.querySelector('#shelf');
 	      ReactDOM.render(<Shelf />, domContainer);
+
+		   ${
+			   getMermaid()
+			   
+		    }
+ 
+			mermaid.initialize({startOnLoad:true});			
 	      </script>
-	    </body>
+
+		 </body>
+
+		
+	
 	  </html>`
 	return template
 }

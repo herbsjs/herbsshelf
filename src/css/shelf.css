@@ -78,7 +78,6 @@ main {
   min-width: 1200px;
   width: 100%;
   display: flex;
-  animation: entrance 500ms ease-out;
 }
 
 .switch {
