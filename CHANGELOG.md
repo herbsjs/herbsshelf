@@ -1,3 +1,16 @@
+# [2.2.0](https://github.com/herbsjs/herbsshelf/compare/v2.1.4...v2.2.0) (2022-04-28)
+
+
+### Bug Fixes
+
+* fix diagram renderization ([26b3c84](https://github.com/herbsjs/herbsshelf/commit/26b3c8445fa98587c6987f249113623f9b68ec3a))
+* update herbs dependencies and semantic release version ([8d7fb83](https://github.com/herbsjs/herbsshelf/commit/8d7fb83c395b0d53cf07766ec88ac314742a612a))
+
+
+### Features
+
+* implement beta version of mermaid ([b667ed0](https://github.com/herbsjs/herbsshelf/commit/b667ed07782e355fae2aac4aed80767a1a2b9b7c))
+
 ## [2.1.4](https://github.com/herbsjs/herbsshelf/compare/v2.1.3...v2.1.4) (2022-02-08)
 
 
