@@ -132,8 +132,7 @@ function generateHTML(project, shelfData, readmePath) {
 			   
 		    }
  
-			mermaid.initialize({startOnLoad:true});
- 
+			mermaid.initialize({startOnLoad:true});			
 	      </script>
 
 		 </body>
