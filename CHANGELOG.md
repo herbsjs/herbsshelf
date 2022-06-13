@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/herbsjs/herbsshelf/compare/v2.2.0...v2.2.1) (2022-06-13)
+
+
+### Bug Fixes
+
+* **deps:** bump @herbsjs/herbs from 1.4.5 to 1.5.0 ([da70784](https://github.com/herbsjs/herbsshelf/commit/da707846b4830cb29c193cfc45fda184064fefc1))
+
 # [2.2.0](https://github.com/herbsjs/herbsshelf/compare/v2.1.4...v2.2.0) (2022-04-28)
 
 
