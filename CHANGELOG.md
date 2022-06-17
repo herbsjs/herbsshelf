@@ -1,3 +1,16 @@
+# [3.0.0](https://github.com/herbsjs/herbsshelf/compare/v2.2.1...v3.0.0) (2022-06-17)
+
+
+### Features
+
+* **specs:** specs are now part of the automated documentation genarated by Shelf ([1f1086e](https://github.com/herbsjs/herbsshelf/commit/1f1086ed7c35cecdfe8a4c496a304edd1ea98a9a)), closes [#25](https://github.com/herbsjs/herbsshelf/issues/25)
+
+
+### BREAKING CHANGES
+
+* **specs:** Change your code from `const renderShelfHTML = require('@herbsjs/herbsshelf')` to
+`const { renderShelfHTML } = require('@herbsjs/herbsshelf')`
+
 ## [2.2.1](https://github.com/herbsjs/herbsshelf/compare/v2.2.0...v2.2.1) (2022-06-13)
 
 
