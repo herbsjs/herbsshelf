@@ -5,6 +5,7 @@ const NavBar = require('./components/navBar')
 const StepsCard = require('./components/stepsCard')
 const RequestCard = require('./components/requestCard')
 const ResponseCard = require('./components/responseCard')
+const scenarioCard = require('./components/scenarioCard')
 
 const getCssStyle = () => {
 	const cssFilePath = path.resolve(__dirname, '../css/shelf.css')
@@ -113,11 +114,13 @@ function generateHTML(project, shelfData, readmePath) {
 						:
 							<section className="content">
 								<h3>{selectedPage.description}</h3>
-								${StepsCard}
 								<div class="content-row">
 									${RequestCard}
 									${ResponseCard}
 								</div>
+								${StepsCard}
+								${scenarioCard}
+								
 							</section>
 						}
 					</main>
@@ -126,19 +129,10 @@ function generateHTML(project, shelfData, readmePath) {
 	      }
 	      const domContainer = document.querySelector('#shelf');
 	      ReactDOM.render(<Shelf />, domContainer);
-
-		   ${
-			   getMermaid()
-			   
-		    }
- 
-			mermaid.initialize({startOnLoad:true});			
+		  ${getMermaid()}
+	      mermaid.initialize({startOnLoad:true});			
 	      </script>
-
 		 </body>
-
-		
-	
 	  </html>`
 	return template
 }

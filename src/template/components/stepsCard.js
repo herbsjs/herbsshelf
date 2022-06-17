@@ -5,7 +5,7 @@ const StepsCard =`
       {selectedPage.steps.map(step => step.type === 'if else' ?
        
        <div class="step-if-description">
-         <li class="li-if-description">{step.description}</li>
+         <li class="li-if-description">🠆 {step.description}</li>
          <ul className="if-steps-list">
           <li class="icon i-if">[if] {step.if.description}</li>
           <li class="icon i-then">[then] {step.then.description}</li>
@@ -13,7 +13,7 @@ const StepsCard =`
         </ul>
         </div>
       :
-        <li>{step.description}</li>
+        <li>🠆 {step.description}</li>
       )}
     </ul>
   </div>

@@ -1,6 +1,6 @@
 const assert = require("assert")
 const { usecase, Ok, step } = require('@herbsjs/herbs')
-const renderShelfHTML = require('../src/shelf')
+const { renderShelfHTML } = require('../src/shelf')
 
 describe("Generate usecase self-documentation", () => {
 
@@ -32,7 +32,7 @@ describe("Generate usecase self-documentation", () => {
       //then
       assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 
-    })   
+    })
 
   })
 
@@ -100,7 +100,7 @@ describe("Generate usecase self-documentation", () => {
 
     it('should validate if documentation generated is a valid HTML document', () => {
       //given
-      var shelf = renderShelfHTML('Project Test', usecases)      
+      var shelf = renderShelfHTML('Project Test', usecases)
       //then
       assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 
