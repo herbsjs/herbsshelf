@@ -107,9 +107,9 @@ function generateHTML(project, shelfData, readmePath) {
 
 	        return (
 				<div id="main-body" className={theme}>
-					${Header}
+					${Header(project)}
 					<main id="shelf">
-						${NavBar(project)}
+						${NavBar}
 						{page < 0 ? <WelcomeProject />
 						:
 							<section className="content">
