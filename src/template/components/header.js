@@ -2,7 +2,6 @@ const Header = (project) => `
   <header> 
     <a href="/">  
       <h1>${project}</h1>
-      <p>Lorem ipsum bla bla bla</p>
     </a>
     <div className="header-right-side">
       built with
