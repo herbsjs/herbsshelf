@@ -103,33 +103,14 @@ describe('Generate usecase self-documentation', () => {
 		})
 	})
 
-	describe('the simplest use case - herbarium', () => {
+	describe('the herbarium use case', () => {
 		var herbarium = {
 			usecases: { all: () => {} },
 			specs: { all: () => {} }
 		}
 
-		var usecases = []
-		const givenTheSimplestUseCase = () => {
-			const uc = usecase('A use case', {
-				'A step': step(() => {
-					return Ok()
-				}),
-				'A second step': step({
-					'step 1': step(() => {
-						return Ok()
-					}),
-					'step 2': step(() => {
-						return Ok()
-					})
-				})
-			})
-			return uc
-		}
-
 		it('should generate some doc', () => {
 			//given
-			usecases.push({ usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } })
 			var shelf = herbsshelf({ herbarium, project: 'Project Test', description: 'Description of the project' })
 			//then
 			assert.ok(shelf)
