@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/herbsjs/herbsshelf/compare/v3.0.0...v3.1.0) (2022-06-25)
+
+
+### Features
+
+* **component:** adds description of the project ([4676013](https://github.com/herbsjs/herbsshelf/commit/4676013043b872f71910c0060f4ea96a1b98c284)), closes [#43](https://github.com/herbsjs/herbsshelf/issues/43)
+
 # [3.0.0](https://github.com/herbsjs/herbsshelf/compare/v2.2.1...v3.0.0) (2022-06-17)
 
 
