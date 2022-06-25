@@ -3,7 +3,7 @@ const Nav =`
     <ul className="uc-nav">
       <li className="uc-nav-groups" onClick={() => openPage(-1)}>
       <span className={navOpen === -1 ? "nav-selected" : null}>
-        README
+        Read me
       </span>
       </li>
       {shelfData.map((item, index) =>
