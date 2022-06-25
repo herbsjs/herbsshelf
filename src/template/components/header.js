@@ -1,7 +1,8 @@
-const Header = (project) => `
+const Header = (project, description) => `
   <header> 
     <a href="/">  
       <h1>${project}</h1>
+      <p>${description}</p>
     </a>
     <div className="header-right-side">
       built with

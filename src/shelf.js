@@ -53,9 +53,9 @@ const formatUseCaseDoc = (usecase, spec) => {
 
 }
 
-function renderShelfHTML(project, usecases, readmePath = './README.md') {
+function renderShelfHTML(project, usecases, description = '', readmePath = './README.md' ) {
   const shelfData = generateShelfData(usecases)
-  return generateHTML(project, shelfData, readmePath)
+  return generateHTML(project, shelfData, description, readmePath)
 }
 
 

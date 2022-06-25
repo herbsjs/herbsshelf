@@ -24,7 +24,7 @@ const getReadme = (path) => {
 	return ''
 }
 
-function generateHTML(project, shelfData, readmePath) {
+function generateHTML(project, shelfData, description, readmePath) {
 	let template = `
 	  <!DOCTYPE html>
 	  <html lang="en">
@@ -106,7 +106,7 @@ function generateHTML(project, shelfData, readmePath) {
 
 	        return (
 				<div id="main-body" className={theme}>
-					${Header(project)}
+					${Header(project, description)}
 					<main id="shelf">
 						${NavBar}
 						{page < 0 ? <WelcomeProject />
