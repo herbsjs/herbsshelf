@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/herbsjs/herbsshelf/compare/v3.1.0...v3.1.1) (2022-06-27)
+
+
+### Bug Fixes
+
+* **deps:** bump @herbsjs/herbs from 1.5.0 to 1.6.1 ([a71902a](https://github.com/herbsjs/herbsshelf/commit/a71902a37be4f6b1f49b7c860373b984bec8a1f3))
+
 # [3.1.0](https://github.com/herbsjs/herbsshelf/compare/v3.0.0...v3.1.0) (2022-06-25)
 
 
