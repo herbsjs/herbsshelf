@@ -59,7 +59,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@herbsjs/herbs": "^1.5.0",
+    "@herbsjs/herbs": "^1.6.1",
     "require-text": "0.0.1"
   }
 }
