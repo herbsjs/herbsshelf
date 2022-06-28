@@ -70,9 +70,15 @@ function herbsshelf({ herbarium, project, description = '', readmePath = './READ
 		tags: { group: item.group }
 	}))
 
+	const entities = Array.from(herbarium.entities.all).map(([_, item]) => ({
+		usecase: item.usecase(),
+		id: item.id,
+		tags: { group: item.group }
+	}))
+
 	const specs = Array.from(herbarium.specs.all).map(([_, item]) => ({ spec: item.spec, id: item.id, usecase: item.usecase }))
 
-	return renderHTML({ project, usecases, specs, description, readmePath })
+	return renderHTML({ project, usecases, entities, specs, description, readmePath })
 }
 
 module.exports = { renderShelfHTML, herbsshelf }

@@ -12,7 +12,11 @@ const getCssStyle = () => {
 	return fs.readFileSync(cssFilePath, 'utf-8')
 }
 
-const getMermaid = () => 'document.querySelectorAll("pre.mermaid, pre>code.language-mermaid").forEach($el => { console.log(1); if ($el.tagName === "CODE") {$el = $el.parentElement} $el.outerHTML = "<div class=\'mermaid\'>" + $el.textContent + "</div> <details> <summary>Diagram source</summary><pre>" + $el.textContent + "</pre></details> "})'
+const initializeMermaid = () => 'document.querySelectorAll("pre.mermaid, pre>code.language-mermaid").forEach($el => { console.log(1); if ($el.tagName === "CODE") {$el = $el.parentElement} $el.outerHTML = "<div class=\'mermaid\'>" + $el.textContent + "</div> <details> <summary>Diagram source</summary><pre>" + $el.textContent + "</pre></details> "})'
+
+const getMermaidDiagran = () => {
+
+}
 
 const getReadme = (path) => {
 	if (fs.existsSync(path)) {
@@ -24,7 +28,7 @@ const getReadme = (path) => {
 	return ''
 }
 
-function generateHTML(project, shelfData, description, readmePath) {
+function generateHTML(project, shelfData, description, readmePath, mermaidDiagram) {
 	let template = `
 	  <!DOCTYPE html>
 	  <html lang="en">
@@ -56,6 +60,7 @@ function generateHTML(project, shelfData, description, readmePath) {
 	        const [page, setPage] = useState(-1);
 	        const [navOpen, setNavOpen] = useState(-1);
 	        const [selectedPage, setSelectedPage] = useState({});
+	        const [diagram, setDiagram] = useState("");
 	        const [shelfData, setShelfData] = useState(${JSON.stringify(shelfData)});
 
 	        const toggleTheme = () => {
@@ -73,15 +78,18 @@ function generateHTML(project, shelfData, description, readmePath) {
 			}
 
 	        const openNav = (value) => {
-	          setNavOpen(navOpen === value ? -1 : value)
-	          setPage(-1)
+			  debugger	
+			  const selectedValue = navOpen === value ? -1 : value
+	          setNavOpen(selectedValue)
+	          setPage(selectedValue)
 	        }
 
 	        const openPage = (value) => {
+			  debugger
 	          const selectedPage = page === value ? -1 : value
 	          setPage(selectedPage)
-						if (value < 0 ) setNavOpen(-1)
-	          if (selectedPage !== -1) setSelectedPage(shelfData[navOpen].useCases[selectedPage])
+			  setNavOpen(selectedPage)
+	          if (selectedPage >= 0) setSelectedPage(shelfData[navOpen].useCases[selectedPage])
 	        }
 
 			const StartedProject = () => {
@@ -102,15 +110,25 @@ function generateHTML(project, shelfData, description, readmePath) {
 				)
 			}
 
+			
+
 			const WelcomeProject = () => readmeText ? <ReadmeDoc /> : <StartedProject /> 
+
+			const EntitiesDiagram = () => (
+				<pre>
+					<code dangerouslySetInnerHTML={{__html: marked.parse('classDiagram \\n Animal <|-- Duck') }}>						
+					</code>
+				</pre>
+			)
 
 	        return (
 				<div id="main-body" className={theme}>
 					${Header(project, description)}
 					<main id="shelf">
 						${NavBar}
-						{page < 0 ? <WelcomeProject />
-						:
+						{page === -1 && <WelcomeProject />}
+						{page === -2 && <EntitiesDiagram />}
+						{page >= 0 &&
 							<section className="content">
 								<h3>{selectedPage.description}</h3>
 								<div class="content-row">
@@ -128,7 +146,7 @@ function generateHTML(project, shelfData, description, readmePath) {
 	      }
 	      const domContainer = document.querySelector('#shelf');
 	      ReactDOM.render(<Shelf />, domContainer);
-		  ${getMermaid()}
+		  ${initializeMermaid()}
 	      mermaid.initialize({startOnLoad:true});			
 	      </script>
 		 </body>
