@@ -59,9 +59,9 @@ function renderShelfHTML(project, usecases, description = '', readmePath = './RE
 }
 
 function herbsshelf({ herbarium, project, description = '', readmePath = './README.md' }) {
-	function renderHTML({ project, usecases, specs, description, readmePath }) {
+	function renderHTML({ project, usecases, entities, specs, description, readmePath }) {
 		const shelfData = generateShelfData(usecases, specs)
-		return generateHTML(project, shelfData, description, readmePath)
+		return generateHTML(project, shelfData, description, readmePath, mermaidDiagram)
 	}
 
 	const usecases = Array.from(herbarium.usecases.all).map(([_, item]) => ({

@@ -77,15 +77,27 @@ function generateHTML(project, shelfData, description, readmePath, mermaidDiagra
 				}
 			}
 
+			useEffect(() => {
+				switch (page) {
+					case -2:					
+						renderDiagram(document.querySelector("#graphDiv"))	
+						break;
+				}				
+			})
+
+			const renderDiagram = (element) => {
+				const graphDefinition = "graph TB\\na-->b"				
+				const graph = mermaid.render("graphDiv", graphDefinition, (svgCode, bindFunctions) => element.innerHTML = svgCode)
+				document.querySelector('#shelf main section.content').append(element)
+			}
+
 	        const openNav = (value) => {
-			  debugger	
 			  const selectedValue = navOpen === value ? -1 : value
 	          setNavOpen(selectedValue)
 	          setPage(selectedValue)
 	        }
 
 	        const openPage = (value) => {
-			  debugger
 	          const selectedPage = page === value ? -1 : value
 	          setPage(selectedPage)
 			  setNavOpen(selectedPage)
@@ -108,17 +120,18 @@ function generateHTML(project, shelfData, description, readmePath, mermaidDiagra
 						<article dangerouslySetInnerHTML={{__html: marked.parse(decodeURI(readmeText)) }}></article>
 					</section>
 				)
-			}
-
-			
+			}			
 
 			const WelcomeProject = () => readmeText ? <ReadmeDoc /> : <StartedProject /> 
 
 			const EntitiesDiagram = () => (
-				<pre>
-					<code dangerouslySetInnerHTML={{__html: marked.parse('classDiagram \\n Animal <|-- Duck') }}>						
-					</code>
-				</pre>
+				<section className="content">
+					<h2>Model Diagram</h2>
+					<p>The easiest way to explore your model in herbs projects, undertand your data by browsing across entities and their relations with safety.</p>
+					<div id="graphDiv" class="mermaid">
+						Loading Diagram...
+					</div>
+				</section>				
 			)
 
 	        return (
