@@ -1,3 +1,4 @@
+const entity2diagram = require('./entity2diagram')
 const generateHTML = require('./template/default')
 
 const generateShelfData = (usecases, specs = []) => {
@@ -53,15 +54,17 @@ const formatUseCaseDoc = (usecase, spec) => {
 	return usecase
 }
 
-function renderShelfHTML(project, usecases, description = '', readmePath = './README.md') {
+function renderShelfHTML(project, usecases, entities, description = '', readmePath = './README.md') {
 	const shelfData = generateShelfData(usecases)
-	return generateHTML(project, shelfData, description, readmePath)
+	const classDiagram = entity2diagram(entities)
+	return generateHTML(project, shelfData, description, readmePath, classDiagram)
 }
 
 function herbsshelf({ herbarium, project, description = '', readmePath = './README.md' }) {
 	function renderHTML({ project, usecases, entities, specs, description, readmePath }) {
 		const shelfData = generateShelfData(usecases, specs)
-		return generateHTML(project, shelfData, description, readmePath, mermaidDiagram)
+		const classDiagram = entity2diagram(entities)
+		return generateHTML(project, shelfData, description, readmePath, classDiagram)
 	}
 
 	const usecases = Array.from(herbarium.usecases.all).map(([_, item]) => ({
@@ -71,9 +74,9 @@ function herbsshelf({ herbarium, project, description = '', readmePath = './READ
 	}))
 
 	const entities = Array.from(herbarium.entities.all).map(([_, item]) => ({
-		usecase: item.usecase(),
+		entity: item.entity,
 		id: item.id,
-		tags: { group: item.group }
+		metadata: item.metadata
 	}))
 
 	const specs = Array.from(herbarium.specs.all).map(([_, item]) => ({ spec: item.spec, id: item.id, usecase: item.usecase }))

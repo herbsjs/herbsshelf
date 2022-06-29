@@ -14,10 +14,6 @@ const getCssStyle = () => {
 
 const initializeMermaid = () => 'document.querySelectorAll("pre.mermaid, pre>code.language-mermaid").forEach($el => { console.log(1); if ($el.tagName === "CODE") {$el = $el.parentElement} $el.outerHTML = "<div class=\'mermaid\'>" + $el.textContent + "</div> <details> <summary>Diagram source</summary><pre>" + $el.textContent + "</pre></details> "})'
 
-const getMermaidDiagran = () => {
-
-}
-
 const getReadme = (path) => {
 	if (fs.existsSync(path)) {
 		const readme = fs.readFileSync(path).toString()
@@ -28,7 +24,7 @@ const getReadme = (path) => {
 	return ''
 }
 
-function generateHTML(project, shelfData, description, readmePath, mermaidDiagram) {
+function generateHTML(project, shelfData, description, readmePath, classDiagram) {
 	let template = `
 	  <!DOCTYPE html>
 	  <html lang="en">
@@ -86,7 +82,7 @@ function generateHTML(project, shelfData, description, readmePath, mermaidDiagra
 			})
 
 			const renderDiagram = (element) => {
-				const graphDefinition = "graph TB\\na-->b"				
+				const graphDefinition = \`${classDiagram}\`		
 				const graph = mermaid.render("graphDiv", graphDefinition, (svgCode, bindFunctions) => element.innerHTML = svgCode)
 				document.querySelector('#shelf main section.content').append(element)
 			}
