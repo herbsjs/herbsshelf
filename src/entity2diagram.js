@@ -1,4 +1,4 @@
-const { checker, BaseEntity } = require("@herbsjs/herbs")
+const { checker } = require("@herbsjs/herbs")
 
 function entity2diagram(entities) {
     let classDiagram = `classDiagram
@@ -15,7 +15,7 @@ function createClasses(entities) {
 
 function createRelationship(entities) {
     let relationShip = ""
-    entities.forEach(element => relationShip += hasRelationShip(element));
+    entities.forEach(element => relationShip += hasRelationShip(element))
     return relationShip
 }
 
@@ -82,7 +82,7 @@ function entity2class({ entity, id, metadata }) {
                 ${entity2fields(entity.prototype.meta.schema)}
                 ${entity2methods(entity.prototype.meta.schema)}                
             }
-        `;
+        `
 }
 
 module.exports = entity2diagram
