@@ -25,14 +25,14 @@ describe('Generate usecase self-documentation', () => {
 		it('should generate some doc', () => {
 			//given
 			usecases.push({ usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } })
-			var shelf = renderShelfHTML('Project Test', usecases, 'Description of the project')
+			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project')
 			//then
 			assert.ok(shelf)
 		})
 
 		it('should validate if documentation generated is a valid HTML document', () => {
 			//given
-			var shelf = renderShelfHTML('Project Test', usecases, 'Description of the project')
+			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project')
 			//then
 			assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 		})
@@ -60,14 +60,14 @@ describe('Generate usecase self-documentation', () => {
 		it('should generate some doc', () => {
 			//given
 			usecases.push({ usecase: givenTheSimplestUseCaseWithRequestResponse(), tags: { group: 'SimplestestUseCaseWithRequestResponse' } })
-			var shelf = renderShelfHTML('Project Test', usecases, 'Description of the project')
+			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project')
 			//then
 			assert.ok(shelf)
 		})
 
 		it('should validate if documentation generated is a valid HTML document', () => {
 			//given
-			var shelf = renderShelfHTML('Project Test', usecases, 'Description of the project')
+			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project')
 			//then
 			assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 		})
@@ -90,14 +90,14 @@ describe('Generate usecase self-documentation', () => {
 		it('should generate some doc', () => {
 			//given
 			usecases.push({ usecase: givenTheSimplestUseCaseWithRequestResponse(), tags: { group: 'SimplestestUseCaseWithRequestResponse' } })
-			var shelf = renderShelfHTML('Project Test', usecases, 'Description of the project')
+			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project')
 			//then
 			assert.ok(shelf)
 		})
 
 		it('should validate if documentation generated is a valid HTML document', () => {
 			//given
-			var shelf = renderShelfHTML('Project Test', usecases, 'Description of the project')
+			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project')
 			//then
 			assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 		})
@@ -106,6 +106,7 @@ describe('Generate usecase self-documentation', () => {
 	describe('the herbarium use case', () => {
 		var herbarium = {
 			usecases: { all: () => {} },
+			entities: { all: () => {} },
 			specs: { all: () => {} }
 		}
 
