@@ -8,7 +8,8 @@ describe('Convert entity to diagram', () => {
 		const AEntity = entity('A Entity', {
 			id: id(Number),
 			stringTest: field(String),
-			booleanTest: field(Boolean)
+			booleanTest: field(Boolean),
+			isExample: () => true
 		})
 
 		return [{ entity: AEntity, id: 'AEntity', metadata: {} }]
@@ -33,7 +34,7 @@ describe('Convert entity to diagram', () => {
 		]
 	}
 
-	it('should render simple class diagram', () => {
+	it('should render simple class diagram with fields and methods', () => {
 		// given
 		const entities = givenASimpleEntity()
 
@@ -42,6 +43,10 @@ describe('Convert entity to diagram', () => {
 
 		// then
 		assert.match(result, /AEntity/)
+		assert.match(result, /Number id/)
+		assert.match(result, /String stringTest/)
+		assert.match(result, /Boolean booleanTest/)
+		assert.match(result, /isExample()/)
 	})
 
 	it('should render a class diagram with relationship one to many', () => {
@@ -69,6 +74,7 @@ describe('Convert entity to diagram', () => {
 		assert.match(result, /ParentEntity/)
 		assert.match(result, /AEntity "1" <|-- "1" ParentEntity/)
 	})
+	
 
 	it('should return null if not given entity', () => {
 		// given

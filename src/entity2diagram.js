@@ -38,7 +38,7 @@ function getRelationShip(entities, { entity, id }) {
         .map(([_, def]) => `
             ${id} "1" <|-- ${getRelationType(entities, def.type)}`)
 
-    const distinctDefinitions = Array.from(new Set([...definition]))        
+    const distinctDefinitions = Array.from(new Set([...definition]))
     return distinctDefinitions.join('')
 }
 
@@ -72,11 +72,8 @@ function getRelationType(entities, type) {
         return `"*" ${findEntityIdByName(entities, type[0].name)}`
     }
 
-    if (isEntity(type)) {
-        return `"1" ${findEntityIdByName(entities, type.name)}`
-    }
+    return `"1" ${findEntityIdByName(entities, type.name)}`
 
-    return `"1" ${type.name}`
 }
 
 function fieldTypeDescription(entities, type) {

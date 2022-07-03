@@ -36,6 +36,14 @@ describe('Generate usecase self-documentation', () => {
 			//then
 			assert.strictEqual(/<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i.test(shelf), true)
 		})
+
+		it('should return empty doc for invalid readme path', () => {
+			//given
+			usecases.push({ usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } })
+			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project', 'invalid.md')
+			//then
+			assert.ok(shelf)
+		})
 	})
 
 	describe('the simplest use case with complex request and response', () => {
