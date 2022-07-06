@@ -90,13 +90,13 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 	        const openNav = (value) => {
 			  const selectedValue = navOpen === value ? -1 : value
 	          setNavOpen(selectedValue)
-	          setPage(selectedValue)
+	          setPage(-1)
 	        }
 
 	        const openPage = (value) => {
 	          const selectedPage = page === value ? -1 : value
 	          setPage(selectedPage)
-			  setNavOpen(selectedPage)
+			  if (value < 0 ) setNavOpen(value)
 	          if (selectedPage >= 0) setSelectedPage(shelfData[navOpen].useCases[selectedPage])
 	        }
 
@@ -145,8 +145,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 									${ResponseCard}
 								</div>
 								${StepsCard}
-								${scenarioCard}
-								
+								${scenarioCard}								
 							</section>
 						}
 					</main>
