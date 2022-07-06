@@ -24,7 +24,7 @@ const getReadme = (path) => {
 	return ''
 }
 
-function generateHTML(project, shelfData, description, readmePath, classDiagram) {
+function generateHTML(project, shelfData, description, readmePath, classDiagram, usecaseFlowChat) {
 	let template = `
 	  <!DOCTYPE html>
 	  <html lang="en">
@@ -50,11 +50,15 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 		
 	    <script type="text/babel">
 	      const { useState, useEffect} = React
-	      function Shelf() {			
+	      function Shelf() {	
+			
+			const ENTITIES_PAGE = -2
+			const README_PAGE = -1
+
 	        const [theme, setTheme] = useState(localStorage.getItem('data-theme'));
 			const [readmeText, setReadmeText] = useState('${getReadme(readmePath)}');
-	        const [page, setPage] = useState(-1);
-	        const [navOpen, setNavOpen] = useState(-1);
+	        const [page, setPage] = useState(README_PAGE);
+	        const [navOpen, setNavOpen] = useState(README_PAGE);
 	        const [selectedPage, setSelectedPage] = useState({});
 	        const [diagram, setDiagram] = useState("");
 	        const [shelfData, setShelfData] = useState(${JSON.stringify(shelfData)});
@@ -74,27 +78,47 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 			}
 
 			useEffect(() => {
+				debugger
 				switch (page) {
-					case -2:					
-						renderDiagram(document.querySelector("#graphDiv"))	
+					case README_PAGE:
 						break;
+					case ENTITIES_PAGE:					
+						renderEntitiesDiagram()
+						break;
+					default:
+						renderUsecaseFlowChat()
+						break;
+							
 				}				
 			})
 
-			const renderDiagram = (element) => {
-				const graphDefinition = \`${classDiagram}\`		
-				const graph = mermaid.render("graphDiv", graphDefinition, (svgCode, bindFunctions) => element.innerHTML = svgCode)
-				document.querySelector('#shelf main section.content').append(element)
+			const renderEntitiesDiagram = () => {
+				const graphDefinition = \`${classDiagram}\`
+				const graph = document.querySelector("#graphDivEntities")
+				const container = document.querySelector('#shelf main section.content')
+				renderDiagram(graph, container, graphDefinition)	
+			}
+
+			const renderUsecaseFlowChat = () => {
+				const graphDefinition = \`${usecaseFlowChat}\`
+				const graph = document.querySelector("#graphDivUseCase")
+				const container = document.querySelector('#shelf main section.content')
+				renderDiagram(graph, container, graphDefinition)
+			}
+
+			const renderDiagram = (element, container, graphDefinition) => {						
+				const graph = mermaid.render(element.id, graphDefinition, (svgCode, bindFunctions) => element.innerHTML = svgCode)
+				container.append(element)
 			}
 
 	        const openNav = (value) => {
-			  const selectedValue = navOpen === value ? -1 : value
+			  const selectedValue = navOpen === value ? README_PAGE : value
 	          setNavOpen(selectedValue)
-	          setPage(-1)
+	          setPage(README_PAGE)
 	        }
 
 	        const openPage = (value) => {
-	          const selectedPage = page === value ? -1 : value
+	          const selectedPage = page === value ? README_PAGE : value
 	          setPage(selectedPage)
 			  if (value < 0 ) setNavOpen(value)
 	          if (selectedPage >= 0) setSelectedPage(shelfData[navOpen].useCases[selectedPage])
@@ -124,7 +148,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 				<section className="content">
 					<h2>Model Diagram</h2>
 					<p>The easiest way to explore your model in herbs projects, undertand your data by browsing across entities and their relations with safety.</p>
-					<div id="graphDiv" class="mermaid">
+					<div id="graphDivEntities" class="mermaid">
 						Loading Diagram...
 					</div>
 				</section>				
@@ -135,8 +159,8 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 					${Header(project, description)}
 					<main id="shelf">
 						${NavBar}
-						{page === -1 && <WelcomeProject />}
-						{page === -2 && <EntitiesDiagram />}
+						{page === README_PAGE && <WelcomeProject />}
+						{page === ENTITIES_PAGE && <EntitiesDiagram />}
 						{page >= 0 &&
 							<section className="content">
 								<h3>{selectedPage.description}</h3>
@@ -146,6 +170,10 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 								</div>
 								${StepsCard}
 								${scenarioCard}								
+								<h3>Usecase workflow</h3>
+								<div id="graphDivUseCase" class="mermaid">
+									Loading Diagram...
+								</div>
 							</section>
 						}
 					</main>
