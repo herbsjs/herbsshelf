@@ -1,6 +1,6 @@
 {
   "name": "@herbsjs/herbsshelf",
-  "version": "3.0.0",
+  "version": "3.1.1",
   "description": "A self-generate documentation about the usecases (buchu) of herbsJS",
   "main": "./src/shelf.js",
   "scripts": {
@@ -59,7 +59,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@herbsjs/herbs": "^1.5.0",
+    "@herbsjs/herbs": "^1.6.1",
     "require-text": "0.0.1"
   }
 }

@@ -24,7 +24,7 @@ const getReadme = (path) => {
 	return ''
 }
 
-function generateHTML(project, shelfData, readmePath) {
+function generateHTML(project, shelfData, description, readmePath) {
 	let template = `
 	  <!DOCTYPE html>
 	  <html lang="en">
@@ -75,14 +75,13 @@ function generateHTML(project, shelfData, readmePath) {
 	        const openNav = (value) => {
 	          setNavOpen(navOpen === value ? -1 : value)
 	          setPage(-1)
-	          forceUpdate()
 	        }
 
 	        const openPage = (value) => {
 	          const selectedPage = page === value ? -1 : value
 	          setPage(selectedPage)
-	          if(selectedPage !== -1) setSelectedPage(shelfData[navOpen].useCases[selectedPage])
-	          forceUpdate()
+						if (value < 0 ) setNavOpen(-1)
+	          if (selectedPage !== -1) setSelectedPage(shelfData[navOpen].useCases[selectedPage])
 	        }
 
 			const StartedProject = () => {
@@ -99,7 +98,7 @@ function generateHTML(project, shelfData, readmePath) {
 				return (
 					<section className="content">
 						<article dangerouslySetInnerHTML={{__html: marked.parse(decodeURI(readmeText)) }}></article>
-						</section>
+					</section>
 				)
 			}
 
@@ -107,9 +106,9 @@ function generateHTML(project, shelfData, readmePath) {
 
 	        return (
 				<div id="main-body" className={theme}>
-					${Header}
+					${Header(project, description)}
 					<main id="shelf">
-						${NavBar(project)}
+						${NavBar}
 						{page < 0 ? <WelcomeProject />
 						:
 							<section className="content">
