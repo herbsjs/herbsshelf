@@ -1,3 +1,15 @@
+# [3.2.0](https://github.com/herbsjs/herbsshelf/compare/v3.1.1...v3.2.0) (2022-07-10)
+
+
+### Bug Fixes
+
+* **layout:** fix layout for readme ([fcae1d3](https://github.com/herbsjs/herbsshelf/commit/fcae1d3865bd3b206e62da7b46c3f16bf57bc954))
+
+
+### Features
+
+* **layout:** small improvements ([f98249c](https://github.com/herbsjs/herbsshelf/commit/f98249ca2699e5be0b4451f35bddddf75a9a1bff))
+
 ## [3.1.1](https://github.com/herbsjs/herbsshelf/compare/v3.1.0...v3.1.1) (2022-06-27)
 
 
