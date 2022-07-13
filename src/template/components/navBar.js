@@ -2,9 +2,14 @@ const Nav =`
   <nav>
     <ul className="uc-nav">
       <li className="uc-nav-groups" onClick={() => openPage(-1)}>
-      <span className={navOpen === -1 ? "nav-selected" : null}>
-        Read me
-      </span>
+        <span className={navOpen === -1 ? "nav-selected" : null}>
+          Read me
+        </span>      
+      </li>
+      <li className="uc-nav-groups" onClick={() => openPage(-2)}>
+        <span className={navOpen === -2 ? "nav-selected" : null}>
+          Entities
+        </span>
       </li>
       {shelfData.map((item, index) =>
         <li key={item.section} className="uc-nav-groups">
