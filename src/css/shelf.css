@@ -503,4 +503,6 @@ li.uc-nav-groups span {
 
 .mermaid {
   margin: 20px 0px;
+  display: flex;
+  justify-content: center;
 }

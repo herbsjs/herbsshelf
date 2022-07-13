@@ -122,8 +122,8 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 
 			const EntitiesDiagram = () => (
 				<section className="content">
-					<h2>Model Diagram</h2>
-					<p>The easiest way to explore your model in herbs projects, undertand your data by browsing across entities and their relations with safety.</p>
+					<h2>Entities</h2>
+					<p>Explore and learn more about ${project} through its entities and relationships.</p>
 					<div id="graphDiv" class="mermaid">
 						Loading Diagram...
 					</div>
