@@ -54,7 +54,7 @@ And call the shelf into you prefered rest route
 
  this.app.get('/herbsshelf', (req, res, next) => {
     res.setHeader('Content-Type', 'text/html')
-    const shelf = renderShelfHTML('Project Name', usecases())
+    const shelf = renderShelfHTML('Project Name', usecases(), entities)
     res.write(shelf)
     res.end()
 })
@@ -65,7 +65,7 @@ If your project has a `readme.md`, this content should be shown at the beginning
 
 ```javascript
 
-const shelf = renderShelfHTML('Project Name', usecases(), './custom-readme.md')
+const shelf = renderShelfHTML('Project Name', usecases(), entities, './custom-readme.md')
 
 ```
 

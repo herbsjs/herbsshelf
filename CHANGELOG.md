@@ -1,3 +1,28 @@
+# [4.0.0](https://github.com/herbsjs/herbsshelf/compare/v3.2.0...v4.0.0) (2022-07-13)
+
+
+### Features
+
+* **mermaid-entities:** centralize class diagram and change entities doc description ([cb24e66](https://github.com/herbsjs/herbsshelf/commit/cb24e66ff487afa1441e8a54b3d7a15639e1b10b)), closes [#38](https://github.com/herbsjs/herbsshelf/issues/38)
+* **mermaid-entities:** implement entities doc with mermaid ([0eb7d15](https://github.com/herbsjs/herbsshelf/commit/0eb7d15fe2965c909cc90ba2ed6252b76775403e)), closes [#38](https://github.com/herbsjs/herbsshelf/issues/38)
+
+
+### BREAKING CHANGES
+
+* **mermaid-entities:** include a new paramter to renderShefHtml method
+
+# [3.2.0](https://github.com/herbsjs/herbsshelf/compare/v3.1.1...v3.2.0) (2022-07-10)
+
+
+### Bug Fixes
+
+* **layout:** fix layout for readme ([fcae1d3](https://github.com/herbsjs/herbsshelf/commit/fcae1d3865bd3b206e62da7b46c3f16bf57bc954))
+
+
+### Features
+
+* **layout:** small improvements ([f98249c](https://github.com/herbsjs/herbsshelf/commit/f98249ca2699e5be0b4451f35bddddf75a9a1bff))
+
 ## [3.1.1](https://github.com/herbsjs/herbsshelf/compare/v3.1.0...v3.1.1) (2022-06-27)
 
 
