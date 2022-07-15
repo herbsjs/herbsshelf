@@ -1,26 +1,40 @@
 const { checker } = require("@herbsjs/herbs")
+const { Steps2Diagram } = require("./steps2Diagram")
+const { StepsRelationship } = require("./stepsRelationship")
 
-function usecase2diagram(usecase) {
-    if (checker.isEmpty(usecase)) return null
+class Usecase2Diagram {
+    constructor({ id, usecase }) {
+        if (checker.isEmpty(usecase) || checker.isEmpty(id)) throw new Error("Usecase2Diagram: id and usecase are required")
+        this.id = id
+        this.usecase = usecase
 
-    let flowChat = `graph TD
-        A([Update User Account])
-        B(Validate given User Account information)
-        C(Is User expired?)
-        D{If User is expired}
-        E(Then Activate User)
-        F(Else Do nothing)
-        G(Save User Account)
-        A --> B
-        B --> C
-        C --> D
-        D --> E
-        D --> F
-        E --> G
-        F --> G
-    `
+    }
 
-    return flowChat
+    getFlowChart() {
+        const definition = this.usecase2FlowChart()
+        return { id: this.id, definition }
+    }
+
+    usecase2FlowChart() {
+        const step2diagram = new Steps2Diagram(this.usecase)
+        const stepRelationship = new StepsRelationship(this.usecase)
+
+        step2diagram.steps2FlowChart(`([*])`, `(*)`)
+        stepRelationship.stepsRelationship(step2diagram.getChartSteps())
+
+        let flowChat = `graph TD
+            ${step2diagram.getClassDiagramString()}           
+            ${stepRelationship.getRelationshipString()}         
+        `
+        return flowChat
+    }
 }
 
-module.exports = usecase2diagram
+module.exports = (usecases) => {
+    const toDiagram = (usecase) => 
+        new Usecase2Diagram(usecase)
+        .getFlowChart()
+
+    const usecasesFlowChart = usecases.map(toDiagram)
+    return usecasesFlowChart[0].definition
+}
