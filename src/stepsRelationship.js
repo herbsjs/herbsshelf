@@ -1,7 +1,6 @@
 class StepsRelationship {
-    constructor(usecase) {
-        this.usecase = usecase
-        this.steps = Object.entries(usecase._mainStep._body)
+    constructor(steps) {
+        this.steps = steps
         this.relationship = []
     }
 
@@ -11,21 +10,41 @@ class StepsRelationship {
             const previousStepInfo = this.steps[index - 1]
 
             // eslint-disable-next-line no-unused-vars
-            const [stepDescription] = stepInfo
+            const [stepDescription, step] = stepInfo
             const [previousStepDescription] = previousStepInfo
-
             const stepId = chartSteps.find(chartStep => chartStep.description === stepDescription).id
-            const previousStepId = chartSteps.find(chartStep => chartStep.description === previousStepDescription).id
 
-            this.relationship.push(`${previousStepId} --> ${stepId}`)
+            if (step.type === 'if else') {
+                const ifSteps = Object.entries(step._body)
+                const stepRelationship = new StepsRelationship(ifSteps)
+                stepRelationship.stepsIfElseRelationship(stepId, chartSteps)
+                this.relationship = this.relationship.concat(stepRelationship.getRelationship())
+            }
+
+            const previousStepId = chartSteps.find(chartStep => chartStep.description === previousStepDescription).id
+            this.relationship.push({ type: step.type, definition: `${previousStepId} --> ${stepId}` })
+
         }
+    }
+
+    stepsIfElseRelationship(rootStepId, chartSteps) {
+        const ifElseCharts = chartSteps.filter(chartStep => chartStep.type === 'if else')
+        const [ifStep, thenStep, elseStep] = ifElseCharts
+
+        this.relationship.push({ type: 'if else', definition: `${rootStepId} --> ${ifStep.id}` })
+        this.relationship.push({ type: 'if else', definition: `${ifStep.id} --> ${thenStep.id}` })
+        this.relationship.push({ type: 'if else', definition: `${ifStep.id} --> ${elseStep.id}` })
+    }
+
+    getRelationship() {
+        return this.relationship
     }
 
 
     getRelationshipString() {
         return this.relationship
             .map(relation => `
-                ${relation}`)
+                ${relation.definition}`)
             .join("")
     }
 }

@@ -16,8 +16,10 @@ class Usecase2Diagram {
     }
 
     usecase2FlowChart() {
-        const step2diagram = new Steps2Diagram(this.usecase)
-        const stepRelationship = new StepsRelationship(this.usecase)
+
+        const steps = Object.entries(this.usecase._mainStep._body)
+        const step2diagram = new Steps2Diagram(steps)
+        const stepRelationship = new StepsRelationship(steps)
 
         step2diagram.steps2FlowChart(`([*])`, `(*)`)
         stepRelationship.stepsRelationship(step2diagram.getChartSteps())
@@ -35,6 +37,6 @@ module.exports = (usecases) => {
         new Usecase2Diagram(usecase)
         .getFlowChart()
 
-    const usecasesFlowChart = usecases.map(toDiagram)
+    const usecasesFlowChart = usecases.filter(element => element.id === 'UpdateItem').map(toDiagram)
     return usecasesFlowChart[0].definition
 }
