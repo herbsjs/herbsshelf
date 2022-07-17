@@ -11,8 +11,20 @@ class StepsRelationship {
 
             // eslint-disable-next-line no-unused-vars
             const [stepDescription, step] = stepInfo
-            const [previousStepDescription] = previousStepInfo
+            const [previousStepDescription, previousStep] = previousStepInfo
             const stepId = chartSteps.find(chartStep => chartStep.description === stepDescription).id
+
+            if (previousStep.type === 'if else') {
+                const [_, thenStep, elseStep] = Object.keys(previousStep._body)
+
+                const thenStepId = chartSteps.find(chartStep => chartStep.description === thenStep).id
+                const elseStepId = chartSteps.find(chartStep => chartStep.description === elseStep).id
+
+                this.relationship.push({ type: step.type, definition: `${thenStepId} --> ${stepId}` })
+                this.relationship.push({ type: step.type, definition: `${elseStepId} --> ${stepId}` })
+
+                continue
+            }
 
             if (step.type === 'if else') {
                 const ifSteps = Object.entries(step._body)
@@ -23,12 +35,11 @@ class StepsRelationship {
 
             const previousStepId = chartSteps.find(chartStep => chartStep.description === previousStepDescription).id
             this.relationship.push({ type: step.type, definition: `${previousStepId} --> ${stepId}` })
-
         }
     }
 
     stepsIfElseRelationship(rootStepId, chartSteps) {
-        const ifElseCharts = chartSteps.filter(chartStep => chartStep.type === 'if else')
+        const ifElseCharts = chartSteps.filter(chartStep => chartStep.parentId === rootStepId)
         const [ifStep, thenStep, elseStep] = ifElseCharts
 
         this.relationship.push({ type: 'if else', definition: `${rootStepId} --> ${ifStep.id}` })
