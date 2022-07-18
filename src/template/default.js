@@ -54,11 +54,14 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 			
 			const ENTITIES_PAGE = -2
 			const README_PAGE = -1
+			const STEPS_VIEW = 'STEPS_VIEW'
+			const CLASS_DIAGRAM_VIEW = 'CLASS_DIAGRAM_VIEW'
 
 	        const [theme, setTheme] = useState(localStorage.getItem('data-theme'));
 			const [readmeText, setReadmeText] = useState('${getReadme(readmePath)}');
 	        const [page, setPage] = useState(README_PAGE);
 	        const [navOpen, setNavOpen] = useState(README_PAGE);
+	        const [usecaseCaseView, setUsecaseCaseView] = useState(STEPS_VIEW);
 	        const [selectedPage, setSelectedPage] = useState({});
 	        const [diagram, setDiagram] = useState("");
 	        const [shelfData, setShelfData] = useState(${JSON.stringify(shelfData)});
@@ -95,6 +98,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 			const renderEntitiesDiagram = () => {
 				const graphDefinition = \`${classDiagram}\`
 				const graph = document.querySelector("#graphDivEntities")
+				if(!graph) return
 				const container = document.querySelector('#shelf main section.content')
 				renderDiagram(graph, container, graphDefinition)	
 			}
@@ -102,7 +106,8 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 			const renderUsecaseFlowChat = () => {
 				const graphDefinition = \`${usecaseFlowChat}\`
 				const graph = document.querySelector("#graphDivUseCase")
-				const container = document.querySelector('#shelf main section.content')
+				if(!graph) return
+				const container = document.querySelector('#shelf main #card-body')
 				renderDiagram(graph, container, graphDefinition)
 			}
 
@@ -169,11 +174,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 									${ResponseCard}
 								</div>
 								${StepsCard}
-								${scenarioCard}								
-								<h3>Usecase workflow</h3>
-								<div id="graphDivUseCase" class="mermaid">
-									Loading Diagram...
-								</div>
+								${scenarioCard}
 							</section>
 						}
 					</main>

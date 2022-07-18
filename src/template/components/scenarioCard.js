@@ -2,7 +2,9 @@ const scenario = `
   {selectedPage.spec && selectedPage.spec.scenarios && selectedPage.spec.scenarios.length > 0 ?
     <div class="content-row">
       <div className="content-card">
-        <h4 className="icon i-scenario">Scenarios:</h4>
+        <div className="header-card">
+          <h4 className="icon i-scenario">Scenarios:</h4>        
+        </div>        
         
         {selectedPage.spec.scenarios.map( (scenario, _) => {
           return <ul className="scenario-list">
