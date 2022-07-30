@@ -1,6 +1,6 @@
 const assert = require('assert')
 const { entity, id, field } = require('@herbsjs/herbs')
-const entity2diagram = require('../src/entity2diagram')
+const entity2diagram = require('../src/mermaid/entity2diagram')
 
 describe('Convert entity to diagram', () => {
 

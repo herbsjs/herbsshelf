@@ -24,7 +24,7 @@ describe('Generate usecase self-documentation', () => {
 
 		it('should generate some doc', () => {
 			//given
-			usecases.push({ usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } })
+			usecases.push({ id: 'AUsecase', usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } })
 			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project')
 			//then
 			assert.ok(shelf)
@@ -39,7 +39,7 @@ describe('Generate usecase self-documentation', () => {
 
 		it('should return empty doc for invalid readme path', () => {
 			//given
-			usecases.push({ usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } })
+			usecases.push({ id: 'AUsecase', usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } })
 			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project', 'invalid.md')
 			//then
 			assert.ok(shelf)
@@ -67,7 +67,7 @@ describe('Generate usecase self-documentation', () => {
 
 		it('should generate some doc', () => {
 			//given
-			usecases.push({ usecase: givenTheSimplestUseCaseWithRequestResponse(), tags: { group: 'SimplestestUseCaseWithRequestResponse' } })
+			usecases.push({ id: 'AUsecaseWithResponse', usecase: givenTheSimplestUseCaseWithRequestResponse(), tags: { group: 'SimplestestUseCaseWithRequestResponse' } })
 			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project')
 			//then
 			assert.ok(shelf)
@@ -97,7 +97,7 @@ describe('Generate usecase self-documentation', () => {
 
 		it('should generate some doc', () => {
 			//given
-			usecases.push({ usecase: givenTheSimplestUseCaseWithRequestResponse(), tags: { group: 'SimplestestUseCaseWithRequestResponse' } })
+			usecases.push({ id: 'AUsecaseWithResponse', usecase: givenTheSimplestUseCaseWithRequestResponse(), tags: { group: 'SimplestestUseCaseWithRequestResponse' } })
 			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the project')
 			//then
 			assert.ok(shelf)

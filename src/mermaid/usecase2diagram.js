@@ -12,7 +12,7 @@ class Usecase2Diagram {
 
     getFlowChart() {
         const definition = this.usecase2FlowChart()
-        return { id: this.id, definition }
+        return { id: this.id, description: this.usecase.description, definition }
     }
 
     usecase2FlowChart() {
@@ -24,11 +24,12 @@ class Usecase2Diagram {
         step2diagram.steps2FlowChart(`([*])`, `(*)`)
         stepRelationship.stepsRelationship(step2diagram.getChartSteps())
 
-        let flowChat = `graph TD
+        let flowChart = `graph TD
             ${step2diagram.getClassDiagramString()}           
-            ${stepRelationship.getRelationshipString()}         
+            ${stepRelationship.getRelationshipString()}
+            ${stepRelationship.getMultistepsRelationshipString()}
         `
-        return flowChat
+        return flowChart
     }
 }
 
@@ -37,6 +38,5 @@ module.exports = (usecases) => {
         new Usecase2Diagram(usecase)
         .getFlowChart()
 
-    const usecasesFlowChart = usecases.filter(element => element.id === 'UpdateItem').map(toDiagram)
-    return usecasesFlowChart[0].definition
+    return usecases.map(toDiagram)
 }

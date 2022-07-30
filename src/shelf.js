@@ -1,5 +1,5 @@
-const entity2diagram = require('./entity2diagram')
-const usecase2diagram = require('./usecase2diagram')
+const entity2diagram = require('./mermaid/entity2diagram')
+const usecase2diagram = require('./mermaid/usecase2diagram')
 const generateHTML = require('./template/default')
 
 const generateShelfData = (usecases, specs = []) => {
@@ -56,18 +56,17 @@ const formatUseCaseDoc = (usecase, spec) => {
 }
 
 function renderHTML({ project, usecases, entities, specs, description, readmePath }) {
-
 	const shelfData = generateShelfData(usecases, specs)
 	const classDiagram = entity2diagram(entities)
-	const usecaseFlowChat = usecase2diagram(usecases)
-	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecaseFlowChat)
+	const usecasesFlowChart = usecase2diagram(usecases)
+	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart)
 }
 
 function renderShelfHTML(project, usecases, entities, description = '', readmePath = './README.md') {
 	const shelfData = generateShelfData(usecases)
 	const classDiagram = entity2diagram(entities)
-	const usecaseFlowChat = usecase2diagram(usecases)
-	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecaseFlowChat)
+	const usecasesFlowChart = usecase2diagram(usecases)
+	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart)
 }
 
 function herbsshelf({ herbarium, project, description = '', readmePath = './README.md' }) {

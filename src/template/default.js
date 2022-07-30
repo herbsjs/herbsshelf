@@ -24,7 +24,7 @@ const getReadme = (path) => {
 	return ''
 }
 
-function generateHTML(project, shelfData, description, readmePath, classDiagram, usecaseFlowChat) {
+function generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart) {
 	let template = `
 	  <!DOCTYPE html>
 	  <html lang="en">
@@ -32,8 +32,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 	      <meta charset="UTF-8" />
 		  <meta name="color-scheme" content="dark light">
 	      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	      <title>Herbs Shelf</title>
-		
+	      <title>Herbs Shelf</title>		
 	  </head>
 	  <style>
 	    ${getCssStyle()}
@@ -60,11 +59,12 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 	        const [theme, setTheme] = useState(localStorage.getItem('data-theme'));
 			const [readmeText, setReadmeText] = useState('${getReadme(readmePath)}');
 	        const [page, setPage] = useState(README_PAGE);
-	        const [navOpen, setNavOpen] = useState(README_PAGE);
-	        const [usecaseCaseView, setUsecaseCaseView] = useState(STEPS_VIEW);
+	        const [navOpen, setNavOpen] = useState(README_PAGE);	        
 	        const [selectedPage, setSelectedPage] = useState({});
 	        const [diagram, setDiagram] = useState("");
 	        const [shelfData, setShelfData] = useState(${JSON.stringify(shelfData)});
+			const [usecaseCaseView, setUsecaseCaseView] = useState(STEPS_VIEW);
+	        const [usecasesDiagram, setUsecasesDiagram] = useState(${JSON.stringify(usecasesFlowChart)});
 
 	        const toggleTheme = () => {
 				const themeSwitch = document.querySelector('#main-body')
@@ -81,7 +81,6 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 			}
 
 			useEffect(() => {
-				debugger
 				switch (page) {
 					case README_PAGE:
 						break;
@@ -104,11 +103,12 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 			}
 
 			const renderUsecaseFlowChat = () => {
-				const graphDefinition = \`${usecaseFlowChat}\`
 				const graph = document.querySelector("#graphDivUseCase")
 				if(!graph) return
+				
+				const graphDefinition = usecasesDiagram.find(usecase => usecase.description === selectedPage.description)
 				const container = document.querySelector('#shelf main #card-body')
-				renderDiagram(graph, container, graphDefinition)
+				renderDiagram(graph, container, graphDefinition.definition)
 			}
 
 			const renderDiagram = (element, container, graphDefinition) => {						
@@ -117,16 +117,16 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 			}
 
 	        const openNav = (value) => {
-			  const selectedValue = navOpen === value ? README_PAGE : value
-	          setNavOpen(selectedValue)
-	          setPage(README_PAGE)
+				const selectedValue = navOpen === value ? README_PAGE : value
+				setNavOpen(selectedValue)
+				setPage(README_PAGE)
 	        }
 
 	        const openPage = (value) => {
-	          const selectedPage = page === value ? README_PAGE : value
-	          setPage(selectedPage)
-			  if (value < 0 ) setNavOpen(value)
-	          if (selectedPage >= 0) setSelectedPage(shelfData[navOpen].useCases[selectedPage])
+				const selectedPage = page === value ? README_PAGE : value
+				setPage(selectedPage)
+				if (value < 0 ) setNavOpen(value)
+				if (selectedPage >= 0) setSelectedPage(shelfData[navOpen].useCases[selectedPage])
 	        }
 
 			const StartedProject = () => {
@@ -184,7 +184,15 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 	      const domContainer = document.querySelector('#shelf');
 	      ReactDOM.render(<Shelf />, domContainer);
 		  ${initializeMermaid()}
-	      mermaid.initialize({startOnLoad:true});			
+	      mermaid.initialize({
+			startOnLoad:true, 
+			theme:'base',
+			themeVariables: { 	
+				primaryColor: '#cfa35a',
+				edgeLabelBackground:'#fff',
+				tertiaryColor: '#eddec6',
+			}
+		});			
 	      </script>
 		 </body>
 	  </html>`
