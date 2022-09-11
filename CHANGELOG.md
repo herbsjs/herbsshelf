@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/herbsjs/herbsshelf/compare/v4.0.0...v4.0.1) (2022-08-15)
+
+
+### Bug Fixes
+
+* **deps:** bump @herbsjs/herbs from 1.6.1 to 1.6.2 ([de42f66](https://github.com/herbsjs/herbsshelf/commit/de42f66319b9c14b1c6a0ec38f1572630cdc25ba))
+
 # [4.0.0](https://github.com/herbsjs/herbsshelf/compare/v3.2.0...v4.0.0) (2022-07-13)
 
 
