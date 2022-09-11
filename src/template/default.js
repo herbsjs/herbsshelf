@@ -12,7 +12,8 @@ const getCssStyle = () => {
 	return fs.readFileSync(cssFilePath, 'utf-8')
 }
 
-const initializeMermaid = () => 'document.querySelectorAll("pre.mermaid, pre>code.language-mermaid").forEach($el => { console.log(1); if ($el.tagName === "CODE") {$el = $el.parentElement} $el.outerHTML = "<div class=\'mermaid\'>" + $el.textContent + "</div> <details> <summary>Diagram source</summary><pre>" + $el.textContent + "</pre></details> "})'
+const initMermaidToReadme = () => 'document.querySelectorAll("pre.mermaid, pre>code.language-mermaid").forEach($el => { console.log(1); if ($el.tagName === "CODE") {$el = $el.parentElement} $el.outerHTML = "<div class=\'mermaid\'>" + $el.textContent + "</div> <details> <summary>Diagram source</summary><pre>" + $el.textContent + "</pre></details> "})'
+
 
 const getReadme = (path) => {
 	if (fs.existsSync(path)) {
@@ -66,6 +67,27 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 			const [usecaseCaseView, setUsecaseCaseView] = useState(STEPS_VIEW);
 	        const [usecasesDiagram, setUsecasesDiagram] = useState(${JSON.stringify(usecasesFlowChart)});
 
+			const initMermaid = (theme) => {
+				const options = {
+					startOnLoad:true, 
+					theme:'base',
+					themeVariables: { 	
+						primaryColor: '#e6d2b1',
+						edgeLabelBackground:'#fff',
+						tertiaryColor: '#eddec6',
+					}
+				}
+
+				if(theme === 'dark') {
+					options.themeVariables = {
+						primaryColor: '#fff',
+						edgeLabelBackground:'#fff',
+						tertiaryColor: '#fff',
+					}
+				} 
+				mermaid.initialize(options);				
+			}
+
 	        const toggleTheme = () => {
 				const themeSwitch = document.querySelector('#main-body')
 						
@@ -73,10 +95,13 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 					themeSwitch.classList.replace("dark", 'light');
 					localStorage.setItem("data-theme", 'light') 
 					setTheme('light')
+					initMermaid('light')
+					
 				} else{
 					themeSwitch.classList.replace("light", "dark");
 					localStorage.setItem("data-theme", "dark")
 					setTheme('dark')
+					initMermaid('dark')					
 				}
 			}
 
@@ -95,6 +120,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 			})
 
 			const renderEntitiesDiagram = () => {
+				initMermaid(localStorage.getItem("data-theme"))
 				const graphDefinition = \`${classDiagram}\`
 				const graph = document.querySelector("#graphDivEntities")
 				if(!graph) return
@@ -103,6 +129,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 			}
 
 			const renderUsecaseFlowChat = () => {
+				initMermaid(localStorage.getItem("data-theme"))
 				const graph = document.querySelector("#graphDivUseCase")
 				if(!graph) return
 				
@@ -153,7 +180,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 				<section className="content">
 					<h2>Entities</h2>
 					<p>Explore and learn more about ${project} through its entities and relationships.</p>
-					<div id="graphDiv" class="mermaid">
+					<div id="graphDivEntities" class="mermaid">
 						Loading Diagram...
 					</div>
 				</section>				
@@ -183,16 +210,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 	      }
 	      const domContainer = document.querySelector('#shelf');
 	      ReactDOM.render(<Shelf />, domContainer);
-		  ${initializeMermaid()}
-	      mermaid.initialize({
-			startOnLoad:true, 
-			theme:'base',
-			themeVariables: { 	
-				primaryColor: '#cfa35a',
-				edgeLabelBackground:'#fff',
-				tertiaryColor: '#eddec6',
-			}
-		});			
+		  ${initMermaidToReadme()}
 	      </script>
 		 </body>
 	  </html>`

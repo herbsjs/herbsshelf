@@ -1,5 +1,4 @@
-const entity2diagram = require('./mermaid/entity2diagram')
-const usecase2diagram = require('./mermaid/usecase2diagram')
+const { entity2diagram, usecase2diagram } = require('@herbsjs/herbs2mermaid')
 const generateHTML = require('./template/default')
 
 const generateShelfData = (usecases, specs = []) => {
@@ -76,17 +75,17 @@ function herbsshelf({ herbarium, project, description = '', readmePath = './READ
 		tags: { group: item.group }
 	}))
 
-	const entities = Array.from(herbarium.entities.all).map(([_, item]) => ({	
+	const entities = Array.from(herbarium.entities.all).map(([_, item]) => ({
 		entity: item.entity,
 		id: item.id,
 		tags: { group: item.group || 'Others' }
 	}))
 
-	const specs = Array.from(herbarium.specs.all).map(([_, item]) => ({ 
-		spec: 
-		item.spec, 
-		id: item.id, 
-		usecase: item.usecase 
+	const specs = Array.from(herbarium.specs.all).map(([_, item]) => ({
+		spec:
+			item.spec,
+		id: item.id,
+		usecase: item.usecase
 	}))
 
 	return renderHTML({ project, usecases, entities, specs, description, readmePath })
