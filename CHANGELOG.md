@@ -1,3 +1,15 @@
+# [4.1.0](https://github.com/herbsjs/herbsshelf/compare/v4.0.1...v4.1.0) (2022-10-10)
+
+
+### Features
+
+* **herbs2mermaid:** install herbs2mermaid and configure darkmode to mermaid render ([6281f72](https://github.com/herbsjs/herbsshelf/commit/6281f729bf344d5ab1ce410654fa5c8616f10857)), closes [#37](https://github.com/herbsjs/herbsshelf/issues/37)
+* **mermaid-usecase:** implement basic ifelse workfow ([f613dde](https://github.com/herbsjs/herbsshelf/commit/f613dded0e88e8eb9f68dcfde7b5accad8f839c8)), closes [#37](https://github.com/herbsjs/herbsshelf/issues/37)
+* **mermaid-usecase:** implement basic usecase class diagram ([bb5614e](https://github.com/herbsjs/herbsshelf/commit/bb5614e1e18fbacae8db5c666512a54784caab4c)), closes [#37](https://github.com/herbsjs/herbsshelf/issues/37)
+* **mermaid-usecase:** implement flow chart tab to shelf ([bc52c9e](https://github.com/herbsjs/herbsshelf/commit/bc52c9e96379ba11c9d9aeab6ba82a5e5b620f59)), closes [#37](https://github.com/herbsjs/herbsshelf/issues/37)
+* **mermaid-usecase:** implement ifelse complex relationship ([bea52d0](https://github.com/herbsjs/herbsshelf/commit/bea52d02fa24b9686f589faf096f87ff837d7073)), closes [#37](https://github.com/herbsjs/herbsshelf/issues/37)
+* **mermaid-usecase:** include usecase flow chat ([dbf0790](https://github.com/herbsjs/herbsshelf/commit/dbf079010f45c572cc5354632286435332e9a145)), closes [#37](https://github.com/herbsjs/herbsshelf/issues/37)
+
 ## [4.0.1](https://github.com/herbsjs/herbsshelf/compare/v4.0.0...v4.0.1) (2022-08-15)
 
 
