@@ -82,8 +82,7 @@ function herbsshelf({ herbarium, project, description = '', readmePath = './READ
 	}))
 
 	const specs = Array.from(herbarium.specs.all).map(([_, item]) => ({
-		spec:
-			item.spec,
+		spec: item.spec,
 		id: item.id,
 		usecase: item.usecase
 	}))
