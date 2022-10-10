@@ -1,4 +1,4 @@
-const entity2diagram = require('./entity2diagram')
+const { entity2diagram, usecase2diagram } = require('@herbsjs/herbs2mermaid')
 const generateHTML = require('./template/default')
 
 const generateShelfData = (usecases, specs = []) => {
@@ -54,19 +54,21 @@ const formatUseCaseDoc = (usecase, spec) => {
 	return usecase
 }
 
+function renderHTML({ project, usecases, entities, specs, description, readmePath }) {
+	const shelfData = generateShelfData(usecases, specs)
+	const classDiagram = entity2diagram(entities)
+	const usecasesFlowChart = usecase2diagram(usecases)
+	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart)
+}
+
 function renderShelfHTML(project, usecases, entities, description = '', readmePath = './README.md') {
 	const shelfData = generateShelfData(usecases)
 	const classDiagram = entity2diagram(entities)
-	return generateHTML(project, shelfData, description, readmePath, classDiagram)
+	const usecasesFlowChart = usecase2diagram(usecases)
+	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart)
 }
 
 function herbsshelf({ herbarium, project, description = '', readmePath = './README.md' }) {
-	function renderHTML({ project, usecases, entities, specs, description, readmePath }) {
-		const shelfData = generateShelfData(usecases, specs)
-		const classDiagram = entity2diagram(entities)
-		return generateHTML(project, shelfData, description, readmePath, classDiagram)
-	}
-
 	const usecases = Array.from(herbarium.usecases.all).map(([_, item]) => ({
 		usecase: item.usecase(),
 		id: item.id,
@@ -76,10 +78,14 @@ function herbsshelf({ herbarium, project, description = '', readmePath = './READ
 	const entities = Array.from(herbarium.entities.all).map(([_, item]) => ({
 		entity: item.entity,
 		id: item.id,
-		metadata: item.metadata
+		tags: { group: item.group || 'Others' }
 	}))
 
-	const specs = Array.from(herbarium.specs.all).map(([_, item]) => ({ spec: item.spec, id: item.id, usecase: item.usecase }))
+	const specs = Array.from(herbarium.specs.all).map(([_, item]) => ({
+		spec: item.spec,
+		id: item.id,
+		usecase: item.usecase
+	}))
 
 	return renderHTML({ project, usecases, entities, specs, description, readmePath })
 }

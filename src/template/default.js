@@ -12,7 +12,8 @@ const getCssStyle = () => {
 	return fs.readFileSync(cssFilePath, 'utf-8')
 }
 
-const initializeMermaid = () => 'document.querySelectorAll("pre.mermaid, pre>code.language-mermaid").forEach($el => { console.log(1); if ($el.tagName === "CODE") {$el = $el.parentElement} $el.outerHTML = "<div class=\'mermaid\'>" + $el.textContent + "</div> <details> <summary>Diagram source</summary><pre>" + $el.textContent + "</pre></details> "})'
+const initMermaidToReadme = () => 'document.querySelectorAll("pre.mermaid, pre>code.language-mermaid").forEach($el => { console.log(1); if ($el.tagName === "CODE") {$el = $el.parentElement} $el.outerHTML = "<div class=\'mermaid\'>" + $el.textContent + "</div> <details> <summary>Diagram source</summary><pre>" + $el.textContent + "</pre></details> "})'
+
 
 const getReadme = (path) => {
 	if (fs.existsSync(path)) {
@@ -24,7 +25,7 @@ const getReadme = (path) => {
 	return ''
 }
 
-function generateHTML(project, shelfData, description, readmePath, classDiagram) {
+function generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart) {
 	let template = `
 	  <!DOCTYPE html>
 	  <html lang="en">
@@ -32,8 +33,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 	      <meta charset="UTF-8" />
 		  <meta name="color-scheme" content="dark light">
 	      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	      <title>Herbs Shelf</title>
-		
+	      <title>Herbs Shelf</title>		
 	  </head>
 	  <style>
 	    ${getCssStyle()}
@@ -50,14 +50,43 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 		
 	    <script type="text/babel">
 	      const { useState, useEffect} = React
-	      function Shelf() {			
+	      function Shelf() {	
+			
+			const ENTITIES_PAGE = -2
+			const README_PAGE = -1
+			const STEPS_VIEW = 'STEPS_VIEW'
+			const CLASS_DIAGRAM_VIEW = 'CLASS_DIAGRAM_VIEW'
+
 	        const [theme, setTheme] = useState(localStorage.getItem('data-theme'));
 			const [readmeText, setReadmeText] = useState('${getReadme(readmePath)}');
-	        const [page, setPage] = useState(-1);
-	        const [navOpen, setNavOpen] = useState(-1);
+	        const [page, setPage] = useState(README_PAGE);
+	        const [navOpen, setNavOpen] = useState(README_PAGE);	        
 	        const [selectedPage, setSelectedPage] = useState({});
 	        const [diagram, setDiagram] = useState("");
 	        const [shelfData, setShelfData] = useState(${JSON.stringify(shelfData)});
+			const [usecaseCaseView, setUsecaseCaseView] = useState(STEPS_VIEW);
+	        const [usecasesDiagram, setUsecasesDiagram] = useState(${JSON.stringify(usecasesFlowChart)});
+
+			const initMermaid = (theme) => {
+				const options = {
+					startOnLoad:true, 
+					theme:'base',
+					themeVariables: { 	
+						primaryColor: '#e6d2b1',
+						edgeLabelBackground:'#fff',
+						tertiaryColor: '#eddec6',
+					}
+				}
+
+				if(theme === 'dark') {
+					options.themeVariables = {
+						primaryColor: '#fff',
+						edgeLabelBackground:'#fff',
+						tertiaryColor: '#fff',
+					}
+				} 
+				mermaid.initialize(options);				
+			}
 
 	        const toggleTheme = () => {
 				const themeSwitch = document.querySelector('#main-body')
@@ -66,38 +95,65 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 					themeSwitch.classList.replace("dark", 'light');
 					localStorage.setItem("data-theme", 'light') 
 					setTheme('light')
+					initMermaid('light')
+					
 				} else{
 					themeSwitch.classList.replace("light", "dark");
 					localStorage.setItem("data-theme", "dark")
 					setTheme('dark')
+					initMermaid('dark')					
 				}
 			}
 
 			useEffect(() => {
 				switch (page) {
-					case -2:					
-						renderDiagram(document.querySelector("#graphDiv"))	
+					case README_PAGE:
 						break;
+					case ENTITIES_PAGE:					
+						renderEntitiesDiagram()
+						break;
+					default:
+						renderUsecaseFlowChat()
+						break;
+							
 				}				
 			})
 
-			const renderDiagram = (element) => {
-				const graphDefinition = \`${classDiagram}\`		
-				const graph = mermaid.render("graphDiv", graphDefinition, (svgCode, bindFunctions) => element.innerHTML = svgCode)
-				document.querySelector('#shelf main section.content').append(element)
+			const renderEntitiesDiagram = () => {
+				initMermaid(localStorage.getItem("data-theme"))
+				const graphDefinition = \`${classDiagram}\`
+				const graph = document.querySelector("#graphDivEntities")
+				if(!graph) return
+				const container = document.querySelector('#shelf main section.content')
+				renderDiagram(graph, container, graphDefinition)	
+			}
+
+			const renderUsecaseFlowChat = () => {
+				initMermaid(localStorage.getItem("data-theme"))
+				const graph = document.querySelector("#graphDivUseCase")
+				if(!graph) return
+				
+				const graphDefinition = usecasesDiagram.find(usecase => usecase.description === selectedPage.description)
+				const container = document.querySelector('#shelf main #card-body')
+				renderDiagram(graph, container, graphDefinition.definition)
+			}
+
+			const renderDiagram = (element, container, graphDefinition) => {						
+				const graph = mermaid.render(element.id, graphDefinition, (svgCode, bindFunctions) => element.innerHTML = svgCode)
+				container.append(element)
 			}
 
 	        const openNav = (value) => {
-			  const selectedValue = navOpen === value ? -1 : value
-	          setNavOpen(selectedValue)
-	          setPage(-1)
+				const selectedValue = navOpen === value ? README_PAGE : value
+				setNavOpen(selectedValue)
+				setPage(README_PAGE)
 	        }
 
 	        const openPage = (value) => {
-	          const selectedPage = page === value ? -1 : value
-	          setPage(selectedPage)
-			  if (value < 0 ) setNavOpen(value)
-	          if (selectedPage >= 0) setSelectedPage(shelfData[navOpen].useCases[selectedPage])
+				const selectedPage = page === value ? README_PAGE : value
+				setPage(selectedPage)
+				if (value < 0 ) setNavOpen(value)
+				if (selectedPage >= 0) setSelectedPage(shelfData[navOpen].useCases[selectedPage])
 	        }
 
 			const StartedProject = () => {
@@ -124,7 +180,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 				<section className="content">
 					<h2>Entities</h2>
 					<p>Explore and learn more about ${project} through its entities and relationships.</p>
-					<div id="graphDiv" class="mermaid">
+					<div id="graphDivEntities" class="mermaid">
 						Loading Diagram...
 					</div>
 				</section>				
@@ -135,8 +191,8 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 					${Header(project, description)}
 					<main id="shelf">
 						${NavBar}
-						{page === -1 && <WelcomeProject />}
-						{page === -2 && <EntitiesDiagram />}
+						{page === README_PAGE && <WelcomeProject />}
+						{page === ENTITIES_PAGE && <EntitiesDiagram />}
 						{page >= 0 &&
 							<section className="content">
 								<h3>{selectedPage.description}</h3>
@@ -145,7 +201,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 									${ResponseCard}
 								</div>
 								${StepsCard}
-								${scenarioCard}								
+								${scenarioCard}
 							</section>
 						}
 					</main>
@@ -154,8 +210,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram)
 	      }
 	      const domContainer = document.querySelector('#shelf');
 	      ReactDOM.render(<Shelf />, domContainer);
-		  ${initializeMermaid()}
-	      mermaid.initialize({startOnLoad:true});			
+		  ${initMermaidToReadme()}
 	      </script>
 		 </body>
 	  </html>`

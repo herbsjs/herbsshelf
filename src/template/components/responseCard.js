@@ -1,7 +1,9 @@
 const ResponseCard =`
   {selectedPage.response && selectedPage.response.length > 0 ?
-    <div className="content-card">
-      <h4 className="icon i-response">Response:</h4>
+    <div className="content-card">      
+      <div className="header-card">
+        <h4 className="icon i-response">Response:</h4>
+      </div>
       <ul className="steps-list">
       {selectedPage.response.map( (resItem, index) => {
           if (['Array of', 'Object of'].includes(resItem.name))
