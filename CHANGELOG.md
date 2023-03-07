@@ -1,3 +1,20 @@
+# [5.0.0](https://github.com/herbsjs/herbsshelf/compare/v4.1.0...v5.0.0) (2023-03-07)
+
+
+### Bug Fixes
+
+* **package.json:** up herbs version ([77f73c6](https://github.com/herbsjs/herbsshelf/commit/77f73c6927a22cb77117b1e0734479be09d504b7))
+
+
+### Continuous Integration
+
+* fix cd ([192b012](https://github.com/herbsjs/herbsshelf/commit/192b012bf8c31b3c533cd236be225de142c4ed60))
+
+
+### BREAKING CHANGES
+
+* upgrade buchu to 2.0
+
 # [4.1.0](https://github.com/herbsjs/herbsshelf/compare/v4.0.1...v4.1.0) (2022-10-10)
 
 
