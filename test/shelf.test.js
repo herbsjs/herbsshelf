@@ -57,7 +57,7 @@ describe('Generate usecase self-documentation', () => {
 			usecases.push({ id: 'AUsecase', usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } })
 			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the projects', readmeFilePath)
 			//then
-			const expectedContent = encodeURI(contentWithQuotes.replaceAll("'", ''))
+			const expectedContent = encodeURI(contentWithQuotes.replace(/'/g, ''))
 			assert.ok(shelf)
 			assert.ok(shelf.indexOf(expectedContent) >= 0)
 			//restore
