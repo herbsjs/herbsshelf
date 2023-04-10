@@ -45,7 +45,7 @@ describe('Generate usecase self-documentation', () => {
 			assert.ok(shelf)
 		})
 
-		it.only('should generate some doc with special chars like single quotes (more than one)', () => {
+		it('should generate some doc with special chars like single quotes (more than one)', () => {
 			//prepare
 			const fs = require('fs')
 			const readmeFilePath = 'single-quotes.md'
