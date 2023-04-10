@@ -44,6 +44,26 @@ describe('Generate usecase self-documentation', () => {
 			//then
 			assert.ok(shelf)
 		})
+
+		it.only('should generate some doc with special chars like single quotes (more than one)', () => {
+			//prepare
+			const fs = require('fs')
+			const readmeFilePath = 'single-quotes.md'
+			const sinon = require('sinon')
+			const contentWithQuotes = 'Test\'s Project with Single Quote\'s'
+			sinon.stub(fs, 'existsSync').withArgs(readmeFilePath).returns(true)
+			sinon.stub(fs, 'readFileSync').withArgs(readmeFilePath).returns(contentWithQuotes)
+			//given
+			usecases.push({ id: 'AUsecase', usecase: givenTheSimplestUseCase(), tags: { group: 'SimplestestUseCase' } })
+			var shelf = renderShelfHTML('Project Test', usecases, null, 'Description of the projects', readmeFilePath)
+			//then
+			const expectedContent = encodeURI(contentWithQuotes.replaceAll("'", ''))
+			assert.ok(shelf)
+			assert.ok(shelf.indexOf(expectedContent) >= 0)
+			//restore
+			fs.existsSync.restore()
+			fs.readFileSync.restore()
+		})
 	})
 
 	describe('the simplest use case with complex request and response', () => {
