@@ -19,7 +19,7 @@ const getReadme = (path) => {
 	if (fs.existsSync(path)) {
 		const readme = fs.readFileSync(path).toString()
 
-		return encodeURI(readme.replace("'", ''))
+		return encodeURI(readme.replace(/'/g, ''))
 	}
 
 	return ''
