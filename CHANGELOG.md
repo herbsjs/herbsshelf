@@ -1,3 +1,12 @@
+## [5.0.1](https://github.com/herbsjs/herbsshelf/compare/v5.0.0...v5.0.1) (2023-04-12)
+
+
+### Bug Fixes
+
+* **shelf.js:** fixing replace of single quotes from replace to replaceAll ([52fbfc1](https://github.com/herbsjs/herbsshelf/commit/52fbfc17f3dc6109658f72c7f0843a03d3cd2dfc))
+* **shelf.test.js:** remove only used for isolating test ([b4bd32a](https://github.com/herbsjs/herbsshelf/commit/b4bd32adad862ad31296a13578af93f1c84cf8d6))
+* **shelf:** fixes using replace with regex instead replaceall allowing node 14 compatibility ([4eb8383](https://github.com/herbsjs/herbsshelf/commit/4eb83837476c38df701a619527209fc3d949a898))
+
 # [5.0.0](https://github.com/herbsjs/herbsshelf/compare/v4.1.0...v5.0.0) (2023-03-07)
 
 
