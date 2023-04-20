@@ -6,6 +6,7 @@ const StepsCard = require('./components/stepsCard')
 const RequestCard = require('./components/requestCard')
 const ResponseCard = require('./components/responseCard')
 const scenarioCard = require('./components/scenarioCard')
+const { EndpointsCard, displayEndpointRequestParameters } = require('./components/endpointsCard')
 
 const getCssStyle = () => {
 	const cssFilePath = path.resolve(__dirname, '../css/shelf.css')
@@ -186,6 +187,8 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 				</section>				
 			)
 
+			${displayEndpointRequestParameters}
+
 	        return (
 				<div id="main-body" className={theme}>
 					${Header(project, description)}
@@ -202,6 +205,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 								</div>
 								${StepsCard}
 								${scenarioCard}
+								${EndpointsCard}
 							</section>
 						}
 					</main>

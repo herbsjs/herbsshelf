@@ -27,6 +27,7 @@
     "herbsjs"
   ],
   "devDependencies": {
+    "@herbsjs/herbs": "^2.0.0",
     "@babel/eslint-parser": "^7.17.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
@@ -60,7 +61,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@herbsjs/herbs": "^2.0.0",
     "@herbsjs/herbs2mermaid": "^1.2.0",
     "require-text": "0.0.1"
   }
