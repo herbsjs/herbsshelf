@@ -1,3 +1,15 @@
+# [5.1.0-beta.1](https://github.com/herbsjs/herbsshelf/compare/v5.0.1...v5.1.0-beta.1) (2023-04-20)
+
+
+### Bug Fixes
+
+* **node:** node version ([bf8459f](https://github.com/herbsjs/herbsshelf/commit/bf8459f09959246420dd6d7b576723ee50d6fe30))
+
+
+### Features
+
+* **endpoint card:** now it is possible to see the endpoint generated in an application using Shelf ([78575d1](https://github.com/herbsjs/herbsshelf/commit/78575d161b535a8538cee7031c58e41d37568f74))
+
 ## [5.0.1](https://github.com/herbsjs/herbsshelf/compare/v5.0.0...v5.0.1) (2023-04-12)
 
 
