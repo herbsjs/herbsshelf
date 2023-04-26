@@ -1,3 +1,10 @@
+# [5.1.0-beta.2](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.1...v5.1.0-beta.2) (2023-04-26)
+
+
+### Features
+
+* **style:** small style improvements ([7b636c8](https://github.com/herbsjs/herbsshelf/commit/7b636c877d0267f5f2a895e2f8d61eb446643bac))
+
 # [5.1.0-beta.1](https://github.com/herbsjs/herbsshelf/compare/v5.0.1...v5.1.0-beta.1) (2023-04-20)
 
 
