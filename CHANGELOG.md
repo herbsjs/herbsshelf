@@ -1,3 +1,12 @@
+# [5.1.0-beta.3](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.2...v5.1.0-beta.3) (2023-04-26)
+
+
+### Bug Fixes
+
+* **dep:** herbs ([3d80748](https://github.com/herbsjs/herbsshelf/commit/3d80748dd54a4fa3e7be40d64d8c88fd54822959))
+* **lock:** herbs ([a35e2c6](https://github.com/herbsjs/herbsshelf/commit/a35e2c64f474b360c1695629d44d0def3c639d0d))
+* **package.json:** fix herbs beta ([493893e](https://github.com/herbsjs/herbsshelf/commit/493893ef6328167ac4bd43344e896a69993e6b74))
+
 # [5.1.0-beta.2](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.1...v5.1.0-beta.2) (2023-04-26)
 
 
