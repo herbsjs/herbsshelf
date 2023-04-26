@@ -65,7 +65,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 	        const [selectedPage, setSelectedPage] = useState({});
 	        const [diagram, setDiagram] = useState("");
 	        const [shelfData, setShelfData] = useState(${JSON.stringify(shelfData)});
-			const [usecaseCaseView, setUsecaseCaseView] = useState(STEPS_VIEW);
+			const [usecaseCaseView, setUsecaseCaseView] = useState(CLASS_DIAGRAM_VIEW);
 	        const [usecasesDiagram, setUsecasesDiagram] = useState(${JSON.stringify(usecasesFlowChart)});
 
 			const initMermaid = (theme) => {

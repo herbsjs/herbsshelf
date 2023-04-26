@@ -5,20 +5,14 @@ const displayEndpointRequestParameters = `const displayEndpointRequestParameters
       if (typeof value === 'object' && !Array.isArray(value)) {
         return (
           <div className="endpoint-parameters-source" key={parameter}>
-            <div
-              className="endpoint-parameters-source-title"
-              style={{ paddingLeft: indentation * 20 }}
-            >
+            <div className="endpoint-parameters-source-title" style={{ paddingLeft: indentation * 20 }} >
               <div className="endpoint-parameters-source-title-name">
                 {parameter}
               </div>
               :{' {'}
             </div>
             {displayEndpointRequestParameters(value, indentation + 1)}
-            <div
-              className="endpoint-parameters-source-title"
-              style={{ paddingLeft: indentation * 20 }}
-            >
+            <div className="endpoint-parameters-source-title" style={{ paddingLeft: indentation * 20 }} >
               {'}'}
             </div>
           </div>
@@ -84,6 +78,12 @@ const EndpointsCard = `
                             </div>
                         </div>
                     })}
+                </div>
+                <div className="endpoint-type">
+                    GraphQL
+                </div>
+                <div className="endpoints-list">
+                    Coming soon... 🚀
                 </div>
             </div>
         </div>
