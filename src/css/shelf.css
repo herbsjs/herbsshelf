@@ -843,3 +843,12 @@ li.uc-nav-groups span {
 .no-border {
   border: none !important;
 }
+
+.flaticon {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 20px;
+  font-size: 10px;
+}

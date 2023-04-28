@@ -59,10 +59,13 @@ const formatUseCaseDoc = (usecase, spec, REST) => {
 				fields.forEach(field => { result[field.name] = field.type })
 				return result
 			}
-			if (Object.getPrototypeOf(obj).name === 'BaseEntity') return stringify(convertFieldsArrayToObject(obj.schema.fields))
+			if (Object.getPrototypeOf(obj).name === 'BaseEntity')
+				return stringify(convertFieldsArrayToObject(obj.schema.fields))
 			const result = {}
 			for (const key in obj) {
-				if (Array.isArray(obj[key])) result[key] = obj[key].map(stringify)[0]
+				if (Array.isArray(obj[key])) result[key] = obj[key].map(stringify)
+				else if (Object.getPrototypeOf(obj[key]).name === 'BaseEntity') 
+					result[key] = stringify(convertFieldsArrayToObject(obj[key].schema.fields))
 				else if (typeof obj[key] === 'object' && obj[key] !== null) result[key] = stringify(obj[key])
 				else result[key] = obj[key].name
 			}

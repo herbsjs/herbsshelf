@@ -209,6 +209,9 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 							</section>
 						}
 					</main>
+					<div className="flaticon">
+						<a href="https://www.flaticon.com/">Icons from Flaticon</a>
+					</div>
 				</div>
 	        );
 	      }

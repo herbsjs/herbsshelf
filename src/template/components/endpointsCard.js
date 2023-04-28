@@ -1,23 +1,27 @@
 const displayEndpointRequestParameters = `const displayEndpointRequestParameters = (parameters, indentation = 0) => {
     return Object.keys(parameters).map((parameter) => {
       const value = parameters[parameter];
-  
-      if (typeof value === 'object' && !Array.isArray(value)) {
+
+      if (typeof value === 'object') {
+        const delimiter = Array.isArray(value) ? ['[{', '}]'] : ['{', '}']
+        const item = Array.isArray(value) ? value[0] : value
         return (
           <div className="endpoint-parameters-source" key={parameter}>
             <div className="endpoint-parameters-source-title" style={{ paddingLeft: indentation * 20 }} >
               <div className="endpoint-parameters-source-title-name">
                 {parameter}
               </div>
-              :{' {'}
+              :{' ' + delimiter[0]}
             </div>
-            {displayEndpointRequestParameters(value, indentation + 1)}
+            {displayEndpointRequestParameters(item, indentation + 1)}
             <div className="endpoint-parameters-source-title" style={{ paddingLeft: indentation * 20 }} >
-              {'}'}
+              {delimiter[1]}
             </div>
           </div>
-        );
-      } else {
+        )
+        
+      } 
+      else {
         return (
           <div
             className="endpoint-parameters-source-parameter"
@@ -31,10 +35,10 @@ const displayEndpointRequestParameters = `const displayEndpointRequestParameters
               {JSON.stringify(value)}
             </div>
           </div>
-        );
+        )
       }
-    });
-  };	
+    })
+  }
 `
 const EndpointsCard = `
     {selectedPage.REST && selectedPage.REST.length > 0 ?
