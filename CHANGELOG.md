@@ -1,3 +1,10 @@
+# [5.1.0-beta.4](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.3...v5.1.0-beta.4) (2023-04-28)
+
+
+### Bug Fixes
+
+* **endpoint:** fix entity field ([8d34aee](https://github.com/herbsjs/herbsshelf/commit/8d34aee51d99b1c3eabff6deefbf29d4fbb10459))
+
 # [5.1.0-beta.3](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.2...v5.1.0-beta.3) (2023-04-26)
 
 
