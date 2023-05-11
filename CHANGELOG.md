@@ -1,3 +1,10 @@
+# [5.1.0-beta.5](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.4...v5.1.0-beta.5) (2023-05-11)
+
+
+### Bug Fixes
+
+* **endpoint:** fix endpoint with new structure from herbs2rest ([92033b5](https://github.com/herbsjs/herbsshelf/commit/92033b5905b45b6844f4eb230c2ac9ed68217fcf))
+
 # [5.1.0-beta.4](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.3...v5.1.0-beta.4) (2023-04-28)
 
 
