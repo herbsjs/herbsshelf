@@ -32,7 +32,7 @@ const displayEndpointRequestParameters = `const displayEndpointRequestParameters
               {parameter}:
             </div>
             <div className="endpoint-parameters-source-parameter-type">
-              {JSON.stringify(value)}
+              {JSON.stringify(value).replace(/"/g, '') + ','}
             </div>
           </div>
         )
