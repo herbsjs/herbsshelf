@@ -72,10 +72,12 @@ describe('Generate usecase self-documentation', () => {
 			const uc = usecase('A use case', {
 				request: {
 					param1: String,
-					param2: Number
+					param2: Number,
+					param3: [String]
 				},
 				response: {
-					output1: String
+					output1: String,
+					output2: [String]
 				},
 				'A step': step((ctx) => {
 					ctx.ret.response3 = ctx.req.param2 + 1
