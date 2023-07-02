@@ -1,3 +1,45 @@
+# [5.1.0-beta.5](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.4...v5.1.0-beta.5) (2023-05-11)
+
+
+### Bug Fixes
+
+* **endpoint:** fix endpoint with new structure from herbs2rest ([92033b5](https://github.com/herbsjs/herbsshelf/commit/92033b5905b45b6844f4eb230c2ac9ed68217fcf))
+
+# [5.1.0-beta.4](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.3...v5.1.0-beta.4) (2023-04-28)
+
+
+### Bug Fixes
+
+* **endpoint:** fix entity field ([8d34aee](https://github.com/herbsjs/herbsshelf/commit/8d34aee51d99b1c3eabff6deefbf29d4fbb10459))
+
+# [5.1.0-beta.3](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.2...v5.1.0-beta.3) (2023-04-26)
+
+
+### Bug Fixes
+
+* **dep:** herbs ([3d80748](https://github.com/herbsjs/herbsshelf/commit/3d80748dd54a4fa3e7be40d64d8c88fd54822959))
+* **lock:** herbs ([a35e2c6](https://github.com/herbsjs/herbsshelf/commit/a35e2c64f474b360c1695629d44d0def3c639d0d))
+* **package.json:** fix herbs beta ([493893e](https://github.com/herbsjs/herbsshelf/commit/493893ef6328167ac4bd43344e896a69993e6b74))
+
+# [5.1.0-beta.2](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.1...v5.1.0-beta.2) (2023-04-26)
+
+
+### Features
+
+* **style:** small style improvements ([7b636c8](https://github.com/herbsjs/herbsshelf/commit/7b636c877d0267f5f2a895e2f8d61eb446643bac))
+
+# [5.1.0-beta.1](https://github.com/herbsjs/herbsshelf/compare/v5.0.1...v5.1.0-beta.1) (2023-04-20)
+
+
+### Bug Fixes
+
+* **node:** node version ([bf8459f](https://github.com/herbsjs/herbsshelf/commit/bf8459f09959246420dd6d7b576723ee50d6fe30))
+
+
+### Features
+
+* **endpoint card:** now it is possible to see the endpoint generated in an application using Shelf ([78575d1](https://github.com/herbsjs/herbsshelf/commit/78575d161b535a8538cee7031c58e41d37568f74))
+
 ## [5.0.1](https://github.com/herbsjs/herbsshelf/compare/v5.0.0...v5.0.1) (2023-04-12)
 
 

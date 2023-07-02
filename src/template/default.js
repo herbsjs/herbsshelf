@@ -6,6 +6,7 @@ const StepsCard = require('./components/stepsCard')
 const RequestCard = require('./components/requestCard')
 const ResponseCard = require('./components/responseCard')
 const scenarioCard = require('./components/scenarioCard')
+const { EndpointsCard, displayEndpointRequestParameters } = require('./components/endpointsCard')
 
 const getCssStyle = () => {
 	const cssFilePath = path.resolve(__dirname, '../css/shelf.css')
@@ -64,7 +65,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 	        const [selectedPage, setSelectedPage] = useState({});
 	        const [diagram, setDiagram] = useState("");
 	        const [shelfData, setShelfData] = useState(${JSON.stringify(shelfData)});
-			const [usecaseCaseView, setUsecaseCaseView] = useState(STEPS_VIEW);
+			const [usecaseCaseView, setUsecaseCaseView] = useState(CLASS_DIAGRAM_VIEW);
 	        const [usecasesDiagram, setUsecasesDiagram] = useState(${JSON.stringify(usecasesFlowChart)});
 
 			const initMermaid = (theme) => {
@@ -186,6 +187,8 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 				</section>				
 			)
 
+			${displayEndpointRequestParameters}
+
 	        return (
 				<div id="main-body" className={theme}>
 					${Header(project, description)}
@@ -202,9 +205,13 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 								</div>
 								${StepsCard}
 								${scenarioCard}
+								${EndpointsCard}
 							</section>
 						}
 					</main>
+					<div className="flaticon">
+						<a href="https://www.flaticon.com/">Icons from Flaticon</a>
+					</div>
 				</div>
 	        );
 	      }

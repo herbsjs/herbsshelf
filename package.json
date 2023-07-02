@@ -1,6 +1,6 @@
 {
   "name": "@herbsjs/herbsshelf",
-  "version": "5.0.1",
+  "version": "5.1.0-beta.5",
   "description": "A self-generate documentation about the usecases (buchu) of herbsJS",
   "main": "./src/shelf.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "example": "examples"
   },
   "engines": {
-    "node": ">= 14.x"
+    "node": ">= 16.x"
   },
   "keywords": [
     "self-documentation",
@@ -27,6 +27,7 @@
     "herbsjs"
   ],
   "devDependencies": {
+    "@herbsjs/herbs": "^2.1.0-beta.4",
     "@babel/eslint-parser": "^7.17.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
@@ -60,7 +61,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@herbsjs/herbs": "^2.0.0",
     "@herbsjs/herbs2mermaid": "^1.2.0",
     "require-text": "0.0.1"
   }
