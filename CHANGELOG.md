@@ -1,3 +1,10 @@
+# [5.1.0-beta.6](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.5...v5.1.0-beta.6) (2023-07-03)
+
+
+### Bug Fixes
+
+* **shelf:** fix response usecase doc ([2701014](https://github.com/herbsjs/herbsshelf/commit/2701014e32e4ca8424ba53b1a40987eeb851b3f3))
+
 # [5.1.0-beta.5](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.4...v5.1.0-beta.5) (2023-05-11)
 
 
