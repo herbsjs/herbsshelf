@@ -1,3 +1,4 @@
+const { checker } = require("@herbsjs/herbs")
 const { entity2diagram, usecase2diagram } = require('@herbsjs/herbs2mermaid')
 const generateHTML = require('./template/default')
 
@@ -24,8 +25,8 @@ const formatUseCaseDoc = (usecase, spec) => {
 	const requestParams = []
 	const responseParams = []
 
-	if (usecase.request) {
-		if (Object.entries(usecase.request).length == 0) responseParams.push({ name: 'Object of', type: usecase.request.name })
+	if (!checker.isEmpty(usecase.request)) {
+		if (Object.entries(usecase.request).length == 0) requestParams.push({ name: 'Object of', type: usecase.request.name })
 		else {
 			Object.entries(usecase.request).map(([key, value]) => {
 				requestParams.push({
@@ -37,10 +38,14 @@ const formatUseCaseDoc = (usecase, spec) => {
 		usecase.request = requestParams
 	}
 
-	if (usecase.response) {
+	if (!checker.isEmpty(usecase.response)) {
 		if (Object.entries(usecase.response).length == 0) responseParams.push({ name: 'Object of', type: usecase.response.name })
 		else {
 			Object.entries(usecase.response).map(([key, value]) => {
+				if (Array.isArray(value)) {
+					responseParams.push({ name: key, type: 'Array of ' + value[0].name })
+					return
+				}
 				responseParams.push({ name: key == '0' ? 'Array of' : key, type: value.name })
 			})
 		}
