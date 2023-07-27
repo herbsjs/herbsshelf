@@ -1,3 +1,10 @@
+# [5.1.0-beta.7](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.6...v5.1.0-beta.7) (2023-07-27)
+
+
+### Bug Fixes
+
+* **steps:** fix nested steps render ([14234dc](https://github.com/herbsjs/herbsshelf/commit/14234dc2de386d11fd4b2330ade9834d00871337))
+
 # [5.1.0-beta.6](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.5...v5.1.0-beta.6) (2023-07-03)
 
 
