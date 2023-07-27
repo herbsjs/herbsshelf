@@ -15,25 +15,25 @@ const scenario = `
             {scenario.samples.map( (sample, _) => {
               return <li className="scenario-list"> 
                 <span className="icon i-sample"></span>
-                {sample.description} <div className="scenario-type">(sample)</div>
+                {sample.description} <div className="tag-line">sample</div>
               </li>
             })}
             {scenario.givens.map( (given, _) => {
               return <li className="scenario-list">
                 <span className="icon i-given"></span>
-                {given.description} <div className="scenario-type">(given)</div>
+                {given.description} <div className="tag-line">given</div>
               </li>
             })}
             {scenario.whens.map( (when, _) => {
               return <li className="scenario-list">
                 <span className="icon i-when"></span>
-                {when.description} <div className="scenario-type">(when)</div>
+                {when.description} <div className="tag-line">when</div>
               </li>
             })}
             {scenario.checks.map( (check, _) => {
               return <li className="scenario-list">
                 <span className="icon i-check"></span>
-                {check.description} <div className="scenario-type">(check)</div>
+                {check.description} <div className="tag-line">check</div>
               </li>
             })}
         </ul>

@@ -7,7 +7,7 @@ const RequestCard =`
         Request
       </h4>
     </div>      
-    <ul className="steps-list">
+    <ul className="req-resp-list">
     {selectedPage.request.map( (reqItem, index) => {
       if (reqItem.type.hasOwnProperty('iterableKind')) {
         return <li> 

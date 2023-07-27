@@ -7,7 +7,7 @@ const ResponseCard = `
           Response
         </h4>
       </div>
-      <ul className="steps-list">
+      <ul className="req-resp-list">
       {selectedPage.response.map( (resItem, index) => {
           if (['Array of', 'Instance of'].includes(resItem.name))
             return <li> {resItem.name} 

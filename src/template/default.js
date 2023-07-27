@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const Header = require('./components/header')
 const NavBar = require('./components/navBar')
-const StepsCard = require('./components/stepsCard')
+const { StepsCard, displayStep } = require('./components/stepsCard')
 const RequestCard = require('./components/requestCard')
 const ResponseCard = require('./components/responseCard')
 const scenarioCard = require('./components/scenarioCard')
@@ -187,6 +187,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 				</section>				
 			)
 
+			${displayStep}
 			${displayEndpointRequestParameters}
 
 	        return (
