@@ -1,3 +1,10 @@
+# [5.1.0-beta.9](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.8...v5.1.0-beta.9) (2023-07-28)
+
+
+### Bug Fixes
+
+* **mermaid:** fix npm problem with beta version ([1227f3c](https://github.com/herbsjs/herbsshelf/commit/1227f3ce8c38f47b7cb0aa162c47f264ca1429ae))
+
 # [5.1.0-beta.8](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.7...v5.1.0-beta.8) (2023-07-28)
 
 
