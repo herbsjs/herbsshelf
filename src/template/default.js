@@ -47,8 +47,11 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 	    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
 	    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/mermaid@8.14.0/dist/mermaid.min.js"></script>
-		
+		<script type="module">
+			import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.3.0/+esm'
+			window.mermaid = mermaid
+		</script>
+
 	    <script type="text/babel">
 	      const { useState, useEffect} = React
 	      function Shelf() {	
@@ -75,7 +78,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 					themeVariables: { 	
 						primaryColor: '#e6d2b1',
 						edgeLabelBackground:'#fff',
-						tertiaryColor: '#eddec6',
+						tertiaryColor: '#f9f9f9',
 					}
 				}
 
@@ -139,8 +142,13 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 				renderDiagram(graph, container, graphDefinition.definition)
 			}
 
-			const renderDiagram = (element, container, graphDefinition) => {						
-				const graph = mermaid.render(element.id, graphDefinition, (svgCode, bindFunctions) => element.innerHTML = svgCode)
+			const renderDiagram = async (element, container, graphDefinition) => {						
+				const { svg, bindFunctions } = await mermaid.render(element.id, graphDefinition);
+				element.innerHTML = svg;
+				// bindFunctions?.(element);
+				if (bindFunctions) bindFunctions(element);
+
+				// const graph = mermaid.render(element.id, graphDefinition, (svgCode, bindFunctions) => element.innerHTML = svgCode)
 				container.append(element)
 			}
 
