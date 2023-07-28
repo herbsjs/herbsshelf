@@ -1,3 +1,10 @@
+# [5.1.0-beta.8](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.7...v5.1.0-beta.8) (2023-07-28)
+
+
+### Bug Fixes
+
+* **mermaid:** bump herbs2mermaid version and fix bugs ([a7ce46a](https://github.com/herbsjs/herbsshelf/commit/a7ce46ad5574fd9dc08c04bb803d293079836ec6))
+
 # [5.1.0-beta.7](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.6...v5.1.0-beta.7) (2023-07-27)
 
 
