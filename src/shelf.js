@@ -93,27 +93,35 @@ function renderShelfHTML(project, usecases, entities, description = '', readmePa
 }
 
 function herbsshelf({ herbarium, project, description = '', readmePath = './README.md' }) {
-	const usecases = Array.from(herbarium.usecases.all).map(([_, item]) => ({
-		usecase: item.usecase(),
+	function groupFrom(node) {
+		if (node.type === herbarium.node.entity) return node.id
+		const entities = node.linkedTo({ type: herbarium.node.entity })
+		const group = entities.length > 0 ? groupFrom(entities[0]) : null
+		const name = group.replace(/([A-Z])/g, ' $1').trim()
+		return name
+	}
+
+	const usecases = herbarium.nodes.find({ type: herbarium.node.usecase }).map((item) => ({
+		usecase: item.value(),
 		id: item.id,
-		tags: { group: item.group }
+		tags: { group: groupFrom(item) }
 	}))
 
-	const entities = Array.from(herbarium.entities.all).map(([_, item]) => ({
-		entity: item.entity,
+	const entities = herbarium.nodes.find({ type: herbarium.node.entity }).map((item) => ({
+		entity: item.value,
 		id: item.id,
-		tags: { group: item.group || 'Others' }
+		tags: { group: groupFrom(item) }
 	}))
 
-	const specs = Array.from(herbarium.specs.all).map(([_, item]) => ({
-		spec: item.spec,
+	const specs = herbarium.nodes.find({ type: herbarium.node.spec }).map((item) => ({
+		spec: item.value,
 		id: item.id,
-		usecase: item.usecase
+		usecase:(() => item.linkedTo({ type: herbarium.node.usecase })?.[0]?.id)()
 	}))
 
-	const REST = Array.from(herbarium.usecases.all).map(([_, item]) => ({
+	const REST = herbarium.nodes.find({ type: herbarium.node.usecase }).map((item) => ({
 		id: item.id,
-		REST: item.REST
+		REST: item.metadatas?.REST
 	}))
 
 	return renderHTML({ project, usecases, entities, specs, REST, description, readmePath })
