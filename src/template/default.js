@@ -207,7 +207,12 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 						{page === ENTITIES_PAGE && <EntitiesDiagram />}
 						{page >= 0 &&
 							<section className="content">
-								<h3>{selectedPage.description}</h3>
+								<h3 className="usecase-description">
+								{selectedPage.description}
+								{selectedPage.metadatas && selectedPage.metadatas.operation && (
+									<div className={'tag-line usecase-' + selectedPage.metadatas.operation}>{selectedPage.metadatas.operation}</div>
+								)}
+								</h3>
 								<div class="content-row">
 									${RequestCard}
 									${ResponseCard}

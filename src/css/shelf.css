@@ -231,6 +231,41 @@ h3 {
   line-height: 75px;
 }
 
+h3.usecase-description {
+  display: flex;
+  align-items: center;
+}
+
+.tag-line.usecase-Create {
+  color: white;
+  border-color: #3498db;
+  background-color: #3498db;
+}
+
+.tag-line.usecase-Read {
+  color: white;
+  border-color: #2ecc71;
+  background-color: #2ecc71;
+}
+
+.tag-line.usecase-ReadAll {
+  color: white;
+  border-color: #2ecc71;
+  background-color: #2ecc71;
+}
+
+.tag-line.usecase-Update {
+  color: white;  
+  border-color: #f1c40f;
+  background-color: #f1c40f;
+}
+
+.tag-line.usecase-Delete {
+  color: white;
+  border-color: #e74c3c;
+  background-color: #e74c3c;
+}
+
 p {
   color: var(--fontColor);
   line-height: 30px;

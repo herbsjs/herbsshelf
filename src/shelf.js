@@ -11,11 +11,14 @@ const generateShelfData = (usecases, specs = [], REST = []) => {
 			useCases: usecases
 				.filter((i) => i.tags.group === group)
 				.map((i) =>
-					formatUseCaseDoc(
-						i.usecase.doc(),
-						specs.find((s) => s.usecase === i.id),
-						REST.find((r) => r.id === i.id)?.REST
-					)
+					Object.assign({
+						metadatas: i.metadatas,
+					}, formatUseCaseDoc(
+							i.usecase.doc(),
+							specs.find((s) => s.usecase === i.id),
+							REST.filter((r) => r.id === i.id)
+						))
+
 				)
 		})
 	}
@@ -55,38 +58,14 @@ const formatUseCaseDoc = (usecase, spec, REST) => {
 	}
 
 	if (spec) usecase.spec = spec.spec.doc()
-	if (REST) {
-		usecase.REST = JSON.parse(JSON.stringify(REST))
-		function stringify(obj) {
-			function convertFieldsArrayToObject(fields) {
-				const result = {}
-				fields.forEach(field => { result[field.name] = field.type })
-				return result
-			}
-			const result = {}
-			for (const key in obj) {
-				if (Array.isArray(obj[key])) result[key] = obj[key].map(stringify)
-				else if (typeof obj[key] === 'object' && obj[key] !== null) result[key] = stringify(obj[key])
-				else result[key] = obj[key].name
-			}
-			return result
-		}
-		REST.map((endpoints) => { usecase.REST.find((e) => e.path === endpoints.path).parameters = stringify(endpoints.parameters) })
+	if (REST.length > 0) {
+		usecase.REST = REST.map((r) => r.REST.toJSON())
 	}
 	return usecase
 }
 
 function renderHTML({ project, usecases, entities, specs, REST, description, readmePath }) {
 	const shelfData = generateShelfData(usecases, specs, REST)
-	const classDiagram = entity2diagram(entities)
-	const usecasesFlowChart = usecase2diagram(usecases)
-	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart)
-}
-
-function renderShelfHTML(project, usecases, entities, description = '', readmePath = './README.md') {
-	// eslint-disable-next-line no-console
-	console.warn(`⚠️  'renderShelfHTML' function is deprecated. Use the 'herbsshelf' function instead.`)
-	const shelfData = generateShelfData(usecases)
 	const classDiagram = entity2diagram(entities)
 	const usecasesFlowChart = usecase2diagram(usecases)
 	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart)
@@ -104,6 +83,7 @@ function herbsshelf({ herbarium, project, description = '', readmePath = './READ
 	const usecases = herbarium.nodes.find({ type: herbarium.node.usecase }).map((item) => ({
 		usecase: item.value(),
 		id: item.id,
+		metadatas: { ...item.metadatas },
 		tags: { group: groupFrom(item) }
 	}))
 
@@ -116,15 +96,15 @@ function herbsshelf({ herbarium, project, description = '', readmePath = './READ
 	const specs = herbarium.nodes.find({ type: herbarium.node.spec }).map((item) => ({
 		spec: item.value,
 		id: item.id,
-		usecase:(() => item.linkedTo({ type: herbarium.node.usecase })?.[0]?.id)()
+		usecase: (() => item.linkedTo({ type: herbarium.node.usecase })?.[0]?.id)()
 	}))
 
-	const REST = herbarium.nodes.find({ type: herbarium.node.usecase }).map((item) => ({
-		id: item.id,
-		REST: item.metadatas?.REST
+	const REST = herbarium.nodes.find({ type: 'RESTEndpoint' }).map((item) => ({
+		id: item.value.usecase.id,
+		REST: item.value
 	}))
 
 	return renderHTML({ project, usecases, entities, specs, REST, description, readmePath })
 }
 
-module.exports = { renderShelfHTML, herbsshelf }
+module.exports = { herbsshelf }
