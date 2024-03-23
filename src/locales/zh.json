@@ -1,0 +1,18 @@
+{
+  "Entities": "实体",
+  "Overview": "概述",
+  "Explore and learn more about %s through its entities and relationships.": "通过实体和关系探索和了解有关 %s 的更多信息。",
+  "Request": "请求",
+  "Response": "回复",
+  "Steps": "步骤",
+  "Built With": "内置",
+  "Scenarios": "场景",
+  "Getting started!": "开始吧",
+  "This is a self-generate documentation, here you can see all the flow of information in the application.": "这是一个自动生成的文档，在这里您可以看到应用程序中的所有信息流",
+  "You can use the lateral panel to navigate into <strong>Use Cases</strong> of this application.": "您可以使用侧面面板导航到此应用程序的<strong>用例</strong>。",
+  "Loading Diagram...": "正在加载图表",
+  "sample": "sample",
+  "given": "given",
+  "when": "when",
+  "check": "check"
+}

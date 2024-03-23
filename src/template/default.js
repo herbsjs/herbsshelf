@@ -2,38 +2,39 @@ const fs = require('fs')
 const path = require('path')
 const Header = require('./components/header')
 const NavBar = require('./components/navBar')
+const Footer = require('./components/footer')
 const StepsCard = require('./components/stepsCard')
 const RequestCard = require('./components/requestCard')
 const ResponseCard = require('./components/responseCard')
 const scenarioCard = require('./components/scenarioCard')
 
 const getCssStyle = () => {
-	const cssFilePath = path.resolve(__dirname, '../css/shelf.css')
-	return fs.readFileSync(cssFilePath, 'utf-8')
+    const cssFilePath = path.resolve(__dirname, '../css/shelf.css')
+    return fs.readFileSync(cssFilePath, 'utf-8')
 }
 
 const initMermaidToReadme = () => 'document.querySelectorAll("pre.mermaid, pre>code.language-mermaid").forEach($el => { console.log(1); if ($el.tagName === "CODE") {$el = $el.parentElement} $el.outerHTML = "<div class=\'mermaid\'>" + $el.textContent + "</div> <details> <summary>Diagram source</summary><pre>" + $el.textContent + "</pre></details> "})'
 
 
 const getReadme = (path) => {
-	if (fs.existsSync(path)) {
-		const readme = fs.readFileSync(path).toString()
+    if (fs.existsSync(path)) {
+        const readme = fs.readFileSync(path).toString()
 
-		return encodeURI(readme.replace(/'/g, ''))
-	}
+        return encodeURI(readme.replace(/'/g, ''))
+    }
 
-	return ''
+    return ''
 }
 
-function generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart) {
-	let template = `
+function generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart, i18n) {
+    let template = `
 	  <!DOCTYPE html>
 	  <html lang="en">
 	  <head>
 	      <meta charset="UTF-8" />
 		  <meta name="color-scheme" content="dark light">
 	      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	      <title>Herbs Shelf</title>		
+	      <title>${project}</title>		
 	  </head>
 	  <style>
 	    ${getCssStyle()}
@@ -115,7 +116,6 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 					default:
 						renderUsecaseFlowChat()
 						break;
-							
 				}				
 			})
 
@@ -159,9 +159,9 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 			const StartedProject = () => {
 				return (
 					<section className="content">
-						<h2>Getting started!</h2>
-						<p>This is a self-generate documentation, here you can see all the flow of information in the application.</p>
-						<p>You can use the lateral panel to navigate into <strong>Use Cases</strong> of this application.</p>
+						<h2>${i18n.__("Getting started!")}</h2>
+						<p>${i18n.__("This is a self-generate documentation, here you can see all the flow of information in the application.")}</p>
+						<p>${i18n.__("You can use the lateral panel to navigate into <strong>Use Cases</strong> of this application.")}</p>
 					</section>
 				)
 			}
@@ -178,10 +178,10 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 
 			const EntitiesDiagram = () => (
 				<section className="content">
-					<h2>Entities</h2>
-					<p>Explore and learn more about ${project} through its entities and relationships.</p>
+					<h2>${i18n.__('Entities')}</h2>
+					<p>${i18n.__('Explore and learn more about %s through its entities and relationships.', project)}</p>
 					<div id="graphDivEntities" class="mermaid">
-						Loading Diagram...
+						${i18n.__("Loading Diagram...")}
 					</div>
 				</section>				
 			)
@@ -190,21 +190,22 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 				<div id="main-body" className={theme}>
 					${Header(project, description)}
 					<main id="shelf">
-						${NavBar}
+						${NavBar(i18n)}
 						{page === README_PAGE && <WelcomeProject />}
 						{page === ENTITIES_PAGE && <EntitiesDiagram />}
 						{page >= 0 &&
 							<section className="content">
 								<h3>{selectedPage.description}</h3>
 								<div class="content-row">
-									${RequestCard}
-									${ResponseCard}
+									${RequestCard(i18n)}
+									${ResponseCard(i18n)}
 								</div>
-								${StepsCard}
-								${scenarioCard}
+								${StepsCard(i18n)}
+								${scenarioCard(i18n)}
 							</section>
 						}
 					</main>
+					${Footer(i18n)}
 				</div>
 	        );
 	      }
@@ -214,6 +215,7 @@ function generateHTML(project, shelfData, description, readmePath, classDiagram,
 	      </script>
 		 </body>
 	  </html>`
-	return template
+    return template
 }
+
 module.exports = generateHTML

@@ -1,0 +1,18 @@
+{
+  "Entities": "इकाइयाँ",
+  "Overview": "अवलोकन",
+  "Explore and learn more about %s through its entities and relationships.": "%s के बारे में उसकी संस्थाओं और संबंधों के माध्यम से अन्वेषण करें और अधिक जानें।",
+  "Request": "अनुरोध",
+  "Response": "प्रतिक्रिया",
+  "Steps": "कदम",
+  "Built With": "इसके साथ निर्मित",
+  "Scenarios": "परिदृश्य",
+  "Getting started!": "आरंभ करना!",
+  "This is a self-generate documentation, here you can see all the flow of information in the application.": "यह एक स्व-निर्मित दस्तावेज़ है, यहां आप एप्लिकेशन में जानकारी के सभी प्रवाह को देख सकते हैं।",
+  "You can use the lateral panel to navigate into <strong>Use Cases</strong> of this application.": "आप इस एप्लिकेशन के <strong>उपयोग मामलों</strong> में नेविगेट करने के लिए पार्श्व पैनल का उपयोग कर सकते हैं।",
+  "Loading Diagram...": "आरेख लोड हो रहा है",
+  "sample": "sample",
+  "given": "given",
+  "when": "when",
+  "check": "check"
+}

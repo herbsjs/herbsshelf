@@ -69,12 +69,16 @@ const shelf = renderShelfHTML('Project Name', usecases(), entities, './custom-re
 
 ```
 
-
+If you want to choose another language:
+```javascript
+const shelf = renderShelfHTML('Project Name', usecases(), entities, './custom-readme.md', 'pt-br')
+```
 You can see the full functionality into the [TODO-LIST ON HERBS repository](https://github.com/herbsjs/todolist-on-herbs)
 
 ## TODO
 
 - [X] Self-documentation
+- [X] Multi Language
 - [ ] Add templates and injection of css file
 - [X] Entities of gotu support
 - [ ] Playground functionality

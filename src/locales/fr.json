@@ -1,0 +1,18 @@
+{
+  "Entities": "Entités",
+  "Overview": "Aperçu",
+  "Explore and learn more about %s through its entities and relationships.": "Explorez et apprenez-en davantage sur %s à travers ses entités et relations.",
+  "Request": "Demande",
+  "Response": "Réponse",
+  "Steps": "Étapes",
+  "Built With": "construit avec",
+  "Scenarios": "Scénarios",
+  "Getting started!": "Pour commencer!",
+  "This is a self-generate documentation, here you can see all the flow of information in the application.": "Il s'agit d'une documentation auto-générée, ici vous pouvez voir tout le flux d'informations dans l'application.",
+  "You can use the lateral panel to navigate into <strong>Use Cases</strong> of this application.": "Vous pouvez utiliser le panneau latéral pour naviguer dans les <strong>Cas d'utilisation</strong> de cette application.",
+  "Loading Diagram...": "Chargement du diagramme...",
+  "sample": "sample",
+  "given": "given",
+  "when": "when",
+  "check": "check"
+}

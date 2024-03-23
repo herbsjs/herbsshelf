@@ -1,14 +1,14 @@
-const Nav =`
+const Nav = (i18n) => `
   <nav>
     <ul className="uc-nav">
       <li className="uc-nav-groups" onClick={() => openPage(-1)}>
         <span className={navOpen === -1 ? "nav-selected" : null}>
-          Read me
+          ${i18n.__('Overview')}
         </span>      
       </li>
       <li className="uc-nav-groups" onClick={() => openPage(-2)}>
         <span className={navOpen === -2 ? "nav-selected" : null}>
-          Entities
+          ${i18n.__('Entities')}
         </span>
       </li>
       {shelfData.map((item, index) =>

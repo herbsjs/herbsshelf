@@ -1,8 +1,8 @@
-const ResponseCard =`
+const ResponseCard = (i18n) => `
   {selectedPage.response && selectedPage.response.length > 0 ?
     <div className="content-card">      
       <div className="header-card">
-        <h4 className="icon i-response">Response:</h4>
+        <h4 className="icon i-response">${i18n.__("Response")}:</h4>
       </div>
       <ul className="steps-list">
       {selectedPage.response.map( (resItem, index) => {

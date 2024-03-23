@@ -1,8 +1,8 @@
-const RequestCard =`
+const RequestCard = (i18n) =>`
   {selectedPage.request && selectedPage.request.length > 0 ?
     <div className="content-card">
     <div className="header-card">
-      <h4 className="icon i-request">Request:</h4>
+      <h4 className="icon i-request">${i18n.__("Request")}:</h4>
     </div>      
     <ul className="steps-list">
     {selectedPage.request.map( (reqItem, index) => {

@@ -1,6 +1,7 @@
 const { checker } = require("@herbsjs/herbs")
 const { entity2diagram, usecase2diagram } = require('@herbsjs/herbs2mermaid')
 const generateHTML = require('./template/default')
+const path = require('path')
 
 const generateShelfData = (usecases, specs = []) => {
 	const shelfData = []
@@ -59,21 +60,27 @@ const formatUseCaseDoc = (usecase, spec) => {
 	return usecase
 }
 
-function renderHTML({ project, usecases, entities, specs, description, readmePath }) {
+function renderHTML({ project, usecases, entities, specs, description, readmePath, locale = 'en' }) {
+	const {I18n} = require('i18n')
+	const i18n = new I18n({
+		locales: ['en', 'es', 'fr', 'pt-br', 'zh', 'in'],
+		defaultLocale: 'en',
+		directory: path.join(__dirname, 'locales')
+	})
+
+	i18n.setLocale(locale)
+
 	const shelfData = generateShelfData(usecases, specs)
 	const classDiagram = entity2diagram(entities)
 	const usecasesFlowChart = usecase2diagram(usecases)
-	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart)
+	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart, i18n)
 }
 
-function renderShelfHTML(project, usecases, entities, description = '', readmePath = './README.md') {
-	const shelfData = generateShelfData(usecases)
-	const classDiagram = entity2diagram(entities)
-	const usecasesFlowChart = usecase2diagram(usecases)
-	return generateHTML(project, shelfData, description, readmePath, classDiagram, usecasesFlowChart)
+function renderShelfHTML(project, usecases, entities, description = '', readmePath = './README.md', locale = 'en') {
+	return renderHTML({project, usecases, entities, description, readmePath, locale})
 }
 
-function herbsshelf({ herbarium, project, description = '', readmePath = './README.md' }) {
+function herbsshelf({ herbarium, project, description = '', readmePath = './README.md' ,locale = 'en'}) {
 	const usecases = Array.from(herbarium.usecases.all).map(([_, item]) => ({
 		usecase: item.usecase(),
 		id: item.id,
@@ -92,7 +99,7 @@ function herbsshelf({ herbarium, project, description = '', readmePath = './READ
 		usecase: item.usecase
 	}))
 
-	return renderHTML({ project, usecases, entities, specs, description, readmePath })
+	return renderHTML({ project, usecases, entities, specs, description, readmePath, locale })
 }
 
 module.exports = { renderShelfHTML, herbsshelf }

@@ -1,0 +1,18 @@
+{
+	"This is a self-generate documentation, here you can see all the flow of information in the application.": "This is a self-generate documentation, here you can see all the flow of information in the application.",
+	"You can use the lateral panel to navigate into <strong>Use Cases</strong> of this application.": "You can use the lateral panel to navigate into <strong>Use Cases</strong> of this application.",
+	"Entities": "Entities",
+	"Explore and learn more about %s through its entities and relationships.": "Explore and learn more about %s through its entities and relationships.",
+	"Loading Diagram...": "Loading Diagram...",
+	"Overview": "Overview",
+	"Request": "Request",
+	"Response": "Response",
+	"Steps": "Steps",
+	"Scenarios": "Scenarios",
+	"sample": "sample",
+	"given": "given",
+	"when": "when",
+	"check": "check",
+	"Built With": "Built With",
+	"Getting started!": "Getting started!"
+}

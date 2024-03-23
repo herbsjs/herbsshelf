@@ -1,7 +1,7 @@
-const StepsCard = `
+const StepsCard = (i18n) => `
   <div className="content-card">
     <div className="header-card">
-      <h4 className="icon i-play no-border">Steps:</h4>
+      <h4 className="icon i-play no-border">${i18n.__("Steps")}:</h4>
       <ul className="card-options">
         <li className="icon i-steps" onClick={() => setUsecaseCaseView(STEPS_VIEW)}></li>
         <li className="icon i-flux" onClick={() => setUsecaseCaseView(CLASS_DIAGRAM_VIEW)}></li>
@@ -26,7 +26,7 @@ const StepsCard = `
         </ul>
       ) : (
           <div id="graphDivUseCase" class="mermaid">
-            Loading Diagram...
+            ${i18n.__("Loading Diagram...")}
           </div>
       )}
     </div>
