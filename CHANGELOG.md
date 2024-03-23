@@ -1,3 +1,11 @@
+# [5.1.0-beta.10](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.9...v5.1.0-beta.10) (2024-03-23)
+
+
+### Features
+
+* **herbarium:** run on the new Herbarium interface ([7b69938](https://github.com/herbsjs/herbsshelf/commit/7b69938836692fca6d2707eb9a5811cbf7809966))
+* **usecase:** show operation metadata next to the name of the use case ([86afc61](https://github.com/herbsjs/herbsshelf/commit/86afc61a3fd4b93d00c5aa5a74da33c8c08f0fe8))
+
 # [5.1.0-beta.9](https://github.com/herbsjs/herbsshelf/compare/v5.1.0-beta.8...v5.1.0-beta.9) (2023-07-28)
 
 
